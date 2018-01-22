@@ -108,8 +108,8 @@ public class MainActivity extends AppCompatActivity/* implements NavigationView.
             bottomNavigation.addItems(bottomNavigationItems);
 
             bottomNavigation.setDefaultBackgroundColor(Color.parseColor("#FEFEFE"));
-            bottomNavigation.setAccentColor(Color.parseColor("#FFD700"));
-            bottomNavigation.setInactiveColor(Color.parseColor("#999999"));
+            bottomNavigation.setAccentColor(Color.parseColor("#4a4a4a"));
+            bottomNavigation.setInactiveColor(Color.parseColor("#a6a8ab"));
             bottomNavigation.setForceTint(true);
             bottomNavigation.setBehaviorTranslationEnabled(false);
             bottomNavigation.setTitleTypeface(Typeface.createFromAsset(getAssets(), "font/AvenirNextLTPro-Regular.otf"));

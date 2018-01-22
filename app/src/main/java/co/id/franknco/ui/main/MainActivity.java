@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity/* implements NavigationView.
             bottomNavigation.addItems(bottomNavigationItems);
 
             bottomNavigation.setDefaultBackgroundColor(Color.parseColor("#FEFEFE"));
-            bottomNavigation.setAccentColor(Color.parseColor("#FFD700"));
+            bottomNavigation.setAccentColor(Color.parseColor("#4a4a4a"));
             bottomNavigation.setInactiveColor(Color.parseColor("#999999"));
             bottomNavigation.setForceTint(true);
             bottomNavigation.setBehaviorTranslationEnabled(false);

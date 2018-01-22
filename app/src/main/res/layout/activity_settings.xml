@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -30,49 +30,76 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-       >
+        tools:ignore="UselessParent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:paddingTop="20dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingTop="20dp">
             <!--  JUDUL Label -->
-            <android.support.design.widget.TextInputLayout
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
-                android:textColorHint="@color/colorAccent">
+                android:orientation="vertical">
 
-                <co.id.franknco.controller.MyTextView
+
+                <LinearLayout
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColorHint="@color/colorAccent">
+
+                        <co.id.franknco.controller.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/hello"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="@dimen/text_size_header" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <!--  Header Name Label -->
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:textColorHint="@color/colorAccent">
+
+                        <co.id.franknco.controller.MyTextView
+                            android:id="@+id/txt_header_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sample_name"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="@dimen/text_size_header" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/btn_settings_points"
+                    android:layout_width="126dp"
                     android:layout_height="wrap_content"
-                    android:text="Hello"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/text_size_header" />
+                    android:layout_marginTop="15dp"
+                    android:text="@string/sample_points"
+                    android:textAllCaps="false"
+                    android:textSize="14sp"
+                    android:textColor="@color/white" />
 
-            </android.support.design.widget.TextInputLayout>
 
-            <!--  Header Name Label -->
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
-                android:paddingLeft="10dp"
-                android:textColorHint="@color/colorAccent">
 
-                <co.id.franknco.controller.MyTextView
-                    android:id="@+id/txt_header_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Park Ji Sung"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/text_size_header" />
-
-            </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
 
             <!--  ! Label -->
             <android.support.design.widget.TextInputLayout
@@ -80,13 +107,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
-                android:paddingLeft="10dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
                 android:textColorHint="@color/colorAccent">
 
                 <co.id.franknco.controller.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="!"
+                    android:text="@string/alert"
                     android:textColor="@color/colorAccent"
                     android:textSize="@dimen/text_size_header" />
 
@@ -118,16 +146,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
                         android:background="@color/abu"
-                        android:paddingLeft="10dp"
-                        android:text="15000 points"
-                        android:textColor="@color/white" />
+                        android:paddingStart="10dp"
+                        android:paddingEnd="100dp"
+                        android:text="@string/_15.000_points"
+                        android:textColor="@color/white"
+                        tools:ignore="ButtonStyle" />
 
                     <Button
                         android:layout_width="19dp"
                         android:layout_height="30dp"
                         android:background="@color/abu"
-                        android:text=">"
-                        android:textColor="@color/white" />
+                        android:text="@string/greater_than_sign"
+                        android:textColor="@color/white"
+                        tools:ignore="ButtonStyle" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -142,7 +173,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="9.75"
                         android:padding="@dimen/activity_horizontal_margin"
-                        android:text="Edit Profile"
+                        android:text="@string/edit_profile"
                         android:textColor="@color/colorAccent"
                         android:textSize="@dimen/text_size_insert" />
 
@@ -150,9 +181,10 @@
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_weight="0.25"
                         android:background="@drawable/right"
-                         android:layout_gravity="center" />
+                        android:contentDescription="@string/forward" />
 
                 </LinearLayout>
 
@@ -174,7 +206,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="9.75"
                         android:padding="@dimen/activity_horizontal_margin"
-                        android:text="History"
+                        android:text="@string/history"
                         android:textColor="@color/colorAccent"
                         android:textSize="@dimen/text_size_insert"
                         android:visibility="gone" />
@@ -183,9 +215,10 @@
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_weight="0.25"
                         android:background="@drawable/right"
-                         android:layout_gravity="center" />
+                        android:contentDescription="@string/forward" />
 
                 </LinearLayout>
 
@@ -207,7 +240,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="9.75"
                         android:padding="@dimen/activity_horizontal_margin"
-                        android:text="Inbox"
+                        android:text="@string/inbox"
                         android:textColor="@color/colorAccent"
                         android:textSize="@dimen/text_size_insert"
                         android:visibility="gone" />
@@ -216,9 +249,10 @@
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_weight="0.25"
                         android:background="@drawable/right"
-                         android:layout_gravity="center" />
+                        android:contentDescription="@string/forward" />
 
                 </LinearLayout>
 
@@ -234,22 +268,82 @@
                     android:weightSum="10">
 
                     <co.id.franknco.controller.MyTextView
+                        android:id="@+id/txt_settings_editprofile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="9.75"
+                        android:padding="@dimen/activity_horizontal_margin"
+                        android:text="@string/edit_profile"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_insert" />
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.25"
+                        android:background="@drawable/right"
+                        android:contentDescription="@string/forward"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#cccccc" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="10">
+
+                    <co.id.franknco.controller.MyTextView
+                        android:id="@+id/txt_settings_inbox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="9.75"
+                        android:padding="@dimen/activity_horizontal_margin"
+                        android:text="@string/inbox"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_insert" />
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.25"
+                        android:background="@drawable/right"
+                        android:contentDescription="@string/forward"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#cccccc" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="10">
+
+                    <co.id.franknco.controller.MyTextView
                         android:id="@+id/txt_faq"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="9.75"
                         android:padding="@dimen/activity_horizontal_margin"
-                        android:text="FAQ"
+                        android:text="@string/faq"
                         android:textColor="@color/colorAccent"
                         android:textSize="@dimen/text_size_insert" />
 
                     <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         android:layout_gravity="center"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_weight="0.25"
                         android:background="@drawable/right"
-                        />
+                        android:contentDescription="@string/forward"/>
 
                 </LinearLayout>
 
@@ -270,17 +364,18 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="9.75"
                         android:padding="@dimen/activity_horizontal_margin"
-                        android:text="Privacy Policy"
+                        android:text="@string/privacy_policy"
                         android:textColor="@color/colorAccent"
                         android:textSize="@dimen/text_size_insert" />
 
                     <ImageView
 
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
                         android:layout_weight="0.25"
                         android:background="@drawable/right"
-                         android:layout_gravity="center" />
+                        android:contentDescription="@string/forward"/>
 
                 </LinearLayout>
 
@@ -300,17 +395,18 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="9.75"
                         android:padding="@dimen/activity_horizontal_margin"
-                        android:text="Change Password"
+                        android:text="@string/change_password"
                         android:textColor="@color/colorAccent"
                         android:textSize="@dimen/text_size_insert" />
 
                     <ImageView
 
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
                         android:layout_weight="0.25"
                         android:background="@drawable/right"
-                         android:layout_gravity="center" />
+                        android:contentDescription="@string/forward"/>
 
                 </LinearLayout>
 
@@ -330,7 +426,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="9.75"
                         android:padding="@dimen/activity_horizontal_margin"
-                        android:text="Logout"
+                        android:text="@string/logout"
                         android:textColor="@color/colorAccent"
                         android:textSize="@dimen/text_size_insert" />
                     <!-- <TextView
@@ -355,11 +451,12 @@
                      android:textSize="@dimen/text_size_insert" />-->
                     <ImageView
 
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
                         android:layout_weight="0.25"
                         android:background="@drawable/right"
-                         android:layout_gravity="center" />
+                        android:contentDescription="@string/forward"/>
 
                 </LinearLayout>
 

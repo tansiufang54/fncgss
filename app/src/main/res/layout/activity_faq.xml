@@ -70,8 +70,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColorHint="@color/colorAccent"
-                    android:paddingBottom="29dp"
-                  >
+                    android:paddingBottom="29dp">
 
                     <co.id.franknco.controller.MyTextView
                         android:id="@+id/input_faq"

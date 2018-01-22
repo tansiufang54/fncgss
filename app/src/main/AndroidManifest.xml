@@ -99,7 +99,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.settings.SettingsActivity" />>
+                android:value=".ui.settings.SettingsActivity" />
 
         </activity>
         <activity
@@ -168,7 +168,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.settings.SettingsActivity" />>
+                android:value=".ui.settings.SettingsActivity" />
 
         </activity>
 
@@ -182,7 +182,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.settings.SettingsActivity" />>
+                android:value=".ui.settings.SettingsActivity" />
 
         </activity>
 
@@ -209,6 +209,17 @@
                 android:value=".ui.main.MainActivity" />
 
         </activity>
+
+        <activity
+            android:name=".ui.editprofile.EditProfileActivity"
+            android:label="Privacy Policy"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".ui.editprofile.EditProfileActivity"
+            android:theme="@style/AppTheme">
+
+        </activity>
+
     </application>
 
 </manifest>

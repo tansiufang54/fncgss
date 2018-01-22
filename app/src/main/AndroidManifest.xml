@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="co.id.franknco">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="co.id.franknco.permission.MAPS_RECEIVE" />
+    <!-- Required to show current location -->
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <permission
+        android:name="co.id.franknco.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+    <!-- Requires OpenGL ES version 2 -->
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <application
+
+        android:name=".controller.AppController"
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".ui.splash.SplashActivity"
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:theme="@style/LoginSignUp"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+
+        </activity>
+        <activity
+            android:name=".ui.signup.SignupActivity"
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask">
+            <!--  <intent-filter>
+                  <action android:name="android.intent.action.MAIN" />
+
+                  <category android:name="android.intent.category.LAUNCHER" />
+              </intent-filter>-->
+        </activity>
+
+        <activity
+            android:name=".ui.addcard.AddCardActivity"
+            android:label="Add Card"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".ui.main.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.main.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".ui.nearby.NearbyActivity"
+            android:label="@string/title_activity_nearby"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".ui.main.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.main.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.nearby.NearbyActivityMap"
+            android:label="Privacy Policy"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".ui.settings.SettingsActivity"
+            android:theme="@style/AppTheme">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.settings.SettingsActivity" />>
+
+        </activity>
+        <activity
+            android:name=".ui.faq.FAQActivity"
+            android:label="FAQ"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".ui.settings.SettingsActivity"
+            android:theme="@style/AppTheme">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.settings.SettingsActivity" />
+        </activity>
+        <activity
+            android:name=".ui.forgotpass.ForgotPasswordActivity"
+            android:label="Forgot Password"
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.login.LoginActivity" />
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".ui.settings.SettingsActivity"
+            android:label="Settings"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".ui.main.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.main.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".ui.changepass.ChangePasswordActivity"
+            android:label="Change Password"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".ui.settings.SettingsActivity"
+            android:theme="@style/AppTheme">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.settings.SettingsActivity" />
+        </activity>
+
+        <activity
+            android:name=".ui.termsandconditions.TermsandConditionActivity"
+            android:label="Terms &amp; Conditions"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".ui.settings.SettingsActivity"
+            android:theme="@style/AppTheme">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.settings.SettingsActivity" />>
+
+        </activity>
+
+        <activity
+            android:name=".ui.policyprivacy.PrivacyPolicyActivity"
+            android:label="Privacy Policy"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".ui.settings.SettingsActivity"
+            android:theme="@style/AppTheme">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.settings.SettingsActivity" />>
+
+        </activity>
+
+        <activity
+            android:name=".ui.history.HistoryActivity"
+            android:label="History"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".ui.settings.SettingsActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.settings.SettingsActivity" />
+
+        </activity>
+
+        <activity
+            android:name=".testslider"
+            android:label="testing"
+            android:parentActivityName=".ui.main.MainActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.main.MainActivity" />
+
+        </activity>
+    </application>
+
+</manifest>

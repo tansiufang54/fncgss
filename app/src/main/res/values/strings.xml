@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Central Mega Kencana</string>
+    <string name="product_name">Product Name</string>
+    <string name="txt_image_slider">Image Slideshow</string>
+    <string name="no_internet_connection">No Internet Connection</string>
+    <string name="time_out">Time Out</string>
+    <string name="error_occured">Error Occurred</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="tab_1">My Card</string>
+    <string name="tab_2">Location</string>
+    <string name="tab_3">Profile</string>
+    <string name="tab_4">Label 4</string>
+    <string name="tab_5">Label 5</string>
+    <string name="title_activity_nearby">Branch Frank &amp; Co</string>
+    <string name="description">View or Hide Password</string>
+    <string name="privacypolicy">Almost all generators or templates are very limited. They usually have limited phrasing and/or limit how many clauses you can include.
+Most likely, the generators will not work for you. Your company is unique and your privacy policy should be geared specifically toward your situation. The chances of a generator actually producing the language and clauses you need are pretty slim.
+Free usually isn’t really free. Most of these sites offer a very basic option before they ask you to upgrade for a higher fee. Consider what you really gain here. You will be paying for something that may or may not actually work for you.</string>
+    <string name="termscondition">Almost all generators or templates are very limited. They usually have limited phrasing and/or limit how many clauses you can include.
+Most likely, the generators will not work for you. Your company is unique and your privacy policy should be geared specifically toward your situation. The chances of a generator actually producing the language and clauses you need are pretty slim.
+Free usually isn’t really free. Most of these sites offer a very basic option before they ask you to upgrade for a higher fee. Consider what you really gain here. You will be paying for something that may or may not actually work for you.</string>
+
+    <string name="err01">Empty Post Code or Post Msg</string>
+    <string name="err02">Post Code not Match</string>
+    <string name="err03">Post Data Must be JSON</string>
+    <string name="err04">Token is Empty</string>
+    <string name="err05">Token Expired, Generate New Token</string>
+    <string name="err06">User and Token not Match</string>
+
+    <string name="sign_up_word">New to CMK? <b>Sign up!</b></string>
+    <string name="sign_up_word1">New to CMK? &#160;</string>
+    <string name="sign_up_word2"><b>Sign up!</b></string>
+    <string name="issued"><b>Issued</b></string>
+    <string name="expired"><b>Expired</b></string>
+    <string name="forgotpassword"><i>"Forgot Password? "</i></string>
+
+</resources>

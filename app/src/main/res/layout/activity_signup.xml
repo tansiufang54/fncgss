@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:fitsSystemWindows="true">
+
+  <!--  <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+-->
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+  <!--  </android.support.design.widget.AppBarLayout>
+-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingEnd="@dimen/padding_end_layout"
+        android:paddingStart="@dimen/padding_start_layout"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <ScrollView
+            android:id="@+id/sv_layer1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+         >
+            <!-- FIRST PAGE -->
+            <LinearLayout
+                android:id="@+id/linearlayout_nextsignup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible"
+                >
+                <!--  JUDUL Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/padding_bottom_header"
+                    android:layout_marginTop="@dimen/layout_marginTop_header"
+                    android:textColorHint="@color/colorAccent">
+
+                    <co.id.franknco.controller.MyTextView
+                        android:id="@+id/signUp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sign Up"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_header" />
+                </android.support.design.widget.TextInputLayout>
+
+                <!--  Email Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/colorAccent"
+                    android:paddingBottom="10dp"
+
+                    >
+
+                    <co.id.franknco.controller.MyEditText
+                        android:id="@+id/input_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_insert" />
+                </android.support.design.widget.TextInputLayout>
+
+                <!-- Password Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/colorAccent"
+                    android:paddingBottom="10dp">
+
+                    <co.id.franknco.controller.MyEditText
+                        android:id="@+id/input_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_insert" />
+                </android.support.design.widget.TextInputLayout>
+
+                <!-- Password Re-enter Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/colorAccent"
+                    android:paddingBottom="11dp">
+
+                    <co.id.franknco.controller.MyEditText
+                        android:id="@+id/input_reEnterPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Re-enter Password"
+                        android:inputType="textPassword"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_insert" />
+                </android.support.design.widget.TextInputLayout>
+
+                <!-- Signup next Button -->
+                <ImageButton
+                    android:id="@+id/btn_next_signup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/next"
+                    android:gravity="end" />
+            </LinearLayout>
+        </ScrollView>
+        <!-- NEXT PAGE -->
+
+        <ScrollView
+            android:id="@+id/sv_layer2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:id="@+id/linearlayout_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+              >
+                <!--  JUDUL Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/padding_bottom_header"
+                    android:layout_marginTop="@dimen/layout_marginTop_header"
+                    android:textColorHint="@color/colorAccent">
+
+                    <co.id.franknco.controller.MyTextView
+                        android:id="@+id/personalInformation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Personal Information"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_header" />
+                </android.support.design.widget.TextInputLayout>
+                <!-- Name Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/colorAccent"
+                    android:paddingBottom="10dp">
+
+                    <co.id.franknco.controller.MyEditText
+                        android:id="@+id/input_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Name"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_insert"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <!-- Date of Birth Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/colorAccent"
+                    android:paddingBottom="10dp">
+
+                    <co.id.franknco.controller.MyEditText
+                        android:id="@+id/input_dateofbirth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:hint="Date of Birth"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_insert" />
+                </android.support.design.widget.TextInputLayout>
+
+                <!-- Address Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/colorAccent"
+                    android:paddingBottom="10dp">
+
+                    <co.id.franknco.controller.MyEditText
+                        android:id="@+id/input_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Address"
+                        android:inputType="textPostalAddress"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_insert" />
+                </android.support.design.widget.TextInputLayout>
+
+                <!-- mobile number -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/colorAccent"
+                    android:paddingBottom="10dp">
+
+                    <co.id.franknco.controller.MyEditText
+                        android:id="@+id/input_mobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Phone Number"
+                        android:inputType="number"
+                        android:maxLength="12"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_insert"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <!-- No Card -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/colorAccent"
+                    android:paddingBottom="17dp">
+
+                    <co.id.franknco.controller.MyEditText
+                        android:id="@+id/input_card_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Number Card"
+                        android:inputType="number"
+                        android:maxLength="16"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_insert"/>
+                </android.support.design.widget.TextInputLayout>
+                <!-- CHECK BOX -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:weightSum="0.5">
+
+                    <CheckBox
+                        android:id="@+id/checkbox_termsandconditions"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/CustomCheckedColor"  />
+
+                    <co.id.franknco.controller.MyTextView
+                        android:id="@+id/terms_and_condition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/activity_horizontal_margin"
+                        android:paddingTop="@dimen/activity_horizontal_margin"
+                        android:textSize="@dimen/text_size"
+                        android:text="I agree to CMK's Terms of Service"
+                        android:textColor="@color/colorAccent" />
+
+                </LinearLayout>
+                <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/btn_signup"
+                    android:layout_width="@dimen/cardview_button_width"
+                    android:layout_height="@dimen/cardview_button_height"
+                    android:layout_gravity="end|right"
+                    android:layout_marginTop="@dimen/margin_top_login"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="10dp"
+                    card_view:cardBackgroundColor="@color/warmgray"
+                    card_view:cardCornerRadius="5dp"
+                    card_view:cardElevation="2dp"
+                    card_view:cardPreventCornerOverlap="false"
+                    card_view:contentPadding="0dp">
+                    <!-- you could also add image view here for icon etc. -->
+                    <co.id.franknco.controller.MyTextView2
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@color/warmgray"
+                        android:ellipsize="end"
+                        android:freezesText="true"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="Join"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_button" />
+                </android.support.v7.widget.CardView>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp" />
+
+
+            </LinearLayout>
+        </ScrollView>
+
+      <!--  <co.id.franknco.controller.MyTextView
+            android:id="@+id/link_login"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="24dp"
+            android:gravity="center"
+            android:text="Already a register? Login"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/text_size" />
+-->
+    </LinearLayout>
+</RelativeLayout>

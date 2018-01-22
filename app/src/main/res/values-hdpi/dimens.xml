@@ -1,0 +1,29 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. 1.5X-->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_height">33dp</dimen>
+    <dimen name="nav_header_width">296dp</dimen>
+    <dimen name="padding_bottom_header">48dp</dimen>
+    <dimen name="padding_start_layout">24dp</dimen>
+    <dimen name="padding_end_layout">24dp</dimen>
+    <dimen name="layout_marginTop_header">71dp</dimen>
+    <dimen name="layout_main_height">480dp</dimen>
+    <dimen name="layout_main_width">290dp</dimen>
+    <dimen name="margin_bottom">15dp</dimen>
+    <dimen name="margin_top_login2">12dp</dimen>
+    <dimen name="margin_top_login">28dp</dimen>
+    <dimen name="edittext_height">24dp</dimen>
+    <dimen name="edittext_width">296dp</dimen>
+    <dimen name="textview_keepmelogin_width">100dp</dimen>
+    <dimen name="textview_forgotpassword_width">100dp</dimen>
+    <dimen name="textview_saldo">16dp</dimen>
+    <dimen name="textview_judul">8dp</dimen>
+    <dimen name="cardview_button_width">108dp</dimen>
+    <dimen name="cardview_button_height">30dp</dimen>
+    <dimen name="text_size">10sp</dimen>
+    <dimen name="text_size_insert">14sp</dimen>
+    <dimen name="text_size_button">16sp</dimen>
+    <dimen name="text_size_header">28sp</dimen>
+    <dimen name="text_size_saldo">18sp</dimen>
+</resources>

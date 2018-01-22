@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:orientation="vertical"
+    android:weightSum="10">
+
+    <co.id.franknco.controller.MyTextView
+        android:id="@+id/cd_title"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="10"
+        android:gravity="center"
+        android:paddingBottom="30dp"
+        android:text="Add new number card"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="23">
+
+        <co.id.franknco.controller.MyEditText
+            android:id="@+id/numb14"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="8dp"
+            android:maxLength="4"
+            android:inputType="numberDecimal"
+            android:text=""
+            android:textSize="@dimen/text_size_insert" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="-"
+            android:textSize="16sp" />
+
+        <co.id.franknco.controller.MyEditText
+            android:id="@+id/numb58"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="8dp"
+            android:maxLength="4"
+            android:inputType="numberDecimal"
+            android:text=""
+            android:textSize="@dimen/text_size_insert" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="-"
+            android:textSize="16sp" />
+
+        <co.id.franknco.controller.MyEditText
+            android:id="@+id/numb912"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="10dp"
+            android:maxLength="4"
+            android:inputType="numberDecimal"
+            android:text=""
+            android:textSize="@dimen/text_size_insert" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="-"
+            android:textSize="16sp" />
+
+        <co.id.franknco.controller.MyEditText
+            android:id="@+id/numb1316"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="10dp"
+            android:maxLength="4"
+            android:inputType="numberDecimal"
+            android:text=""
+            android:textSize="@dimen/text_size_insert" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorAccent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="end"
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_weight="3"
+
+        >
+
+        <co.id.franknco.controller.MyButton
+            android:id="@+id/cd_btn_negative2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:background="@drawable/cd_button"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Cancel"
+            android:textSize="@dimen/text_size"
+            android:textStyle="bold" />
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            />
+        <co.id.franknco.controller.MyButton
+            android:id="@+id/cd_btn_positive2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:background="@drawable/cd_button"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Ok"
+            android:textSize="@dimen/text_size"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

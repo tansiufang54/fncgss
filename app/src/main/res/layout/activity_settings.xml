@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+
+    android:paddingEnd="@dimen/padding_end_layout"
+    android:paddingStart="@dimen/padding_start_layout">
+
+    <!--<android.support.design.widget.AppBarLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+         <android.support.v7.widget.Toolbar
+             android:id="@+id/toolbar"
+             android:layout_width="match_parent"
+             android:layout_height="?attr/actionBarSize"
+             android:background="?attr/colorPrimary"
+             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+             app:titleTextColor="@color/colorPrimaryDark"
+             app:subtitleTextColor="@color/colorPrimaryDark" />
+
+     </android.support.design.widget.AppBarLayout>-->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+       >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingTop="20dp"
+            android:orientation="horizontal">
+            <!--  JUDUL Label -->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:textColorHint="@color/colorAccent">
+
+                <co.id.franknco.controller.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hello"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/text_size_header" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!--  Header Name Label -->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:paddingLeft="10dp"
+                android:textColorHint="@color/colorAccent">
+
+                <co.id.franknco.controller.MyTextView
+                    android:id="@+id/txt_header_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Park Ji Sung"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/text_size_header" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!--  ! Label -->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:paddingLeft="10dp"
+                android:textColorHint="@color/colorAccent">
+
+                <co.id.franknco.controller.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="!"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/text_size_header" />
+
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <!-- Button Point -->
+                <LinearLayout
+                    android:id="@+id/linear_but_points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="30dp"
+                    android:visibility="gone">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:background="@color/abu"
+                        android:paddingLeft="10dp"
+                        android:text="15000 points"
+                        android:textColor="@color/white" />
+
+                    <Button
+                        android:layout_width="19dp"
+                        android:layout_height="30dp"
+                        android:background="@color/abu"
+                        android:text=">"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:weightSum="10">
+
+                    <co.id.franknco.controller.MyTextView
+                        android:id="@+id/txt_edit_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="9.75"
+                        android:padding="@dimen/activity_horizontal_margin"
+                        android:text="Edit Profile"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_insert" />
+
+                    <ImageView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:background="@drawable/right"
+                         android:layout_gravity="center" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#cccccc"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:weightSum="10">
+
+                    <co.id.franknco.controller.MyTextView
+                        android:id="@+id/txt_history"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="9.75"
+                        android:padding="@dimen/activity_horizontal_margin"
+                        android:text="History"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_insert"
+                        android:visibility="gone" />
+
+                    <ImageView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:background="@drawable/right"
+                         android:layout_gravity="center" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#cccccc"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:weightSum="10">
+
+                    <co.id.franknco.controller.MyTextView
+                        android:id="@+id/txt_inbox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="9.75"
+                        android:padding="@dimen/activity_horizontal_margin"
+                        android:text="Inbox"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_insert"
+                        android:visibility="gone" />
+
+                    <ImageView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:background="@drawable/right"
+                         android:layout_gravity="center" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#cccccc"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="10">
+
+                    <co.id.franknco.controller.MyTextView
+                        android:id="@+id/txt_faq"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="9.75"
+                        android:padding="@dimen/activity_horizontal_margin"
+                        android:text="FAQ"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_insert" />
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:background="@drawable/right"
+                        />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#cccccc" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="10">
+
+
+                    <co.id.franknco.controller.MyTextView
+                        android:id="@+id/txt_privacy_policy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="9.75"
+                        android:padding="@dimen/activity_horizontal_margin"
+                        android:text="Privacy Policy"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_insert" />
+
+                    <ImageView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:background="@drawable/right"
+                         android:layout_gravity="center" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#cccccc" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="10">
+
+                    <co.id.franknco.controller.MyTextView
+                        android:id="@+id/txt_change_pass"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="9.75"
+                        android:padding="@dimen/activity_horizontal_margin"
+                        android:text="Change Password"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_insert" />
+
+                    <ImageView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:background="@drawable/right"
+                         android:layout_gravity="center" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#cccccc" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="10">
+
+                    <co.id.franknco.controller.MyTextView
+                        android:id="@+id/txt_logout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="9.75"
+                        android:padding="@dimen/activity_horizontal_margin"
+                        android:text="Logout"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_insert" />
+                    <!-- <TextView
+                   android:id="@+id/txt_terms_and_condition"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:padding="@dimen/activity_horizontal_margin"
+                   android:text="Terms and Condition"
+                   android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/text_size_insert" />
+
+               <               android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#cccccc"/>
+
+                <TextView
+                    android:id="@+id/txt_logout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/activity_horizontal_margin"
+                    android:text="Logout"
+                     android:textSize="@dimen/text_size_insert" />-->
+                    <ImageView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:background="@drawable/right"
+                         android:layout_gravity="center" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#cccccc" />
+
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>
+</RelativeLayout>

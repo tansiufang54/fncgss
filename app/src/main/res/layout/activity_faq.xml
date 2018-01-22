@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    tools:context=".ui.main.MainActivity">
+
+   <!-- <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+-->
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        />
+
+  <!--  </android.support.design.widget.AppBarLayout>
+-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingEnd="@dimen/padding_end_layout"
+            android:paddingStart="@dimen/padding_start_layout"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true">
+
+            <!--  JUDUL Label -->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_bottom_header"
+                android:layout_marginTop="@dimen/layout_marginTop_header"
+                android:textColorHint="@color/colorAccent">
+
+                <co.id.franknco.controller.MyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="FAQ"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/text_size_header" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorAccent"
+                    android:paddingBottom="30dp"
+                    android:paddingTop="5dp" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <!--  <ImageView
+                  android:layout_width="wrap_content"
+                  android:layout_height="72dp"
+                  android:layout_gravity="center_horizontal"
+                  android:layout_marginBottom="24dp"
+                  android:src="@drawable/logo" />-->
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/colorAccent"
+                    android:paddingBottom="29dp"
+                  >
+
+                    <co.id.franknco.controller.MyTextView
+                        android:id="@+id/input_faq"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textMultiLine"
+                        android:maxLines="12"
+                        android:scrollHorizontally="false"
+                        android:textColor="@color/colorAccent"
+                        android:textColorHighlight="@color/colorAccent"
+                        android:textSize="@dimen/text_size"/>
+                </android.support.design.widget.TextInputLayout>
+            </ScrollView>
+
+            <!--    <Button
+                    android:id="@+id/btn_privacy_policy"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/button_rounded_dark_violet"
+                    android:padding="12dp"
+                    android:text="Got It"
+                    android:textColor="@color/white" />-->
+
+        </LinearLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>
+
+
+    <!--
+    <android.support.design.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.MainActivity">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:titleTextColor="@color/colorPrimaryDark"
+                app:subtitleTextColor="@color/colorPrimaryDark" />
+
+        </android.support.design.widget.AppBarLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <ExpandableListView
+                android:id="@+id/lvExp"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:textColorHint="@color/colorAccent"
+                android:textColor="@color/colorAccent"/>
+
+        </RelativeLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+    -->

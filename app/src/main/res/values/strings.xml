@@ -47,14 +47,15 @@ Free usually isn’t really free. Most of these sites offer a very basic option 
     <string name="history">History</string>
     <string name="hello">Hello</string>
     <string name="sample_name">Park Ji Sung</string>
-    <string name="sample_points"><![CDATA[15,000 points >]]></string>
+    <string name="sample_points"><![CDATA[15.000 points >]]></string>
     <string name="alert">!</string>
     <string name="faq">FAQ</string>
     <string name="change_password">Change Password</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="logout">Logout</string>
-    <string name="_15000_points">15000 points</string>
+    <string name="_15.000_points">15.000 points</string>
     <string name="greater_than_sign"><![CDATA[>]]></string>
     <string name="forward">forward</string>
+    <string name="old_password">Old Password</string>
 
 </resources>

@@ -20,6 +20,7 @@ import co.id.franknco.controller.SessionManager;
 import co.id.franknco.dialog.CustomDialog;
 import co.id.franknco.testslider;
 import co.id.franknco.ui.changepass.ChangePasswordActivity;
+import co.id.franknco.ui.editprofile.EditProfileActivity;
 import co.id.franknco.ui.faq.FAQActivity;
 import co.id.franknco.ui.history.HistoryActivity;
 import co.id.franknco.ui.login.LoginActivity;
@@ -62,6 +63,12 @@ public class SettingsActivity extends Fragment {
             throw new IllegalStateException("Activity must implement toolbar");
         }
     }*/
+
+
+    @OnClick(R.id.txt_settings_editprofile)
+    public void toEditProfile(View v){
+        startActivity(new Intent(getActivity(), EditProfileActivity.class));
+    }
 
     @OnClick(R.id.txt_change_pass)
     public void toChangePass(View v){

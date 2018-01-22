@@ -36,5 +36,12 @@ Free usually isn’t really free. Most of these sites offer a very basic option 
     <string name="issued"><b>Issued</b></string>
     <string name="expired"><b>Expired</b></string>
     <string name="forgotpassword"><i>"Forgot Password? "</i></string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="dd_mm_yyyy">dd - mm - yyyy</string>
+    <string name="address">Address</string>
+    <string name="phone_number">Phone number</string>
+    <string name="save">Save</string>
 
 </resources>

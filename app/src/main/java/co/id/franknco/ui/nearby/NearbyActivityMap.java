@@ -68,11 +68,13 @@ import co.id.franknco.controller.GetUrlName;
 import co.id.franknco.controller.SessionManager;
 import co.id.franknco.crypto.Temp3DES;
 import co.id.franknco.ui.login.LoginActivity;
+import retrofit2.http.PUT;
 
-public class NearbyActivityMap extends AppCompatActivity /*implements OnMapReadyCallback,
-        GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener,
-        LocationListener*/ {
+public class NearbyActivityMap extends AppCompatActivity implements  OnMapReadyCallback,
+        GoogleMap.OnMarkerClickListener,
+        GoogleMap.OnMapClickListener {
+
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.proListNearby)
@@ -82,11 +84,15 @@ public class NearbyActivityMap extends AppCompatActivity /*implements OnMapReady
     @BindView(R.id.listNearby)
     ListView _listCollege;
 
+    public static final String TAG = NearbyActivity.class.getSimpleName();
+
     ConfigurasiAPI function;
     SessionManager sessionManager;
 
+
+    private SupportMapFragment mapFragment;
+
     GoogleMap mGoogleMap;
-    SupportMapFragment mapFrag;
     LocationRequest mLocationRequest;
     GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
@@ -147,8 +153,11 @@ public class NearbyActivityMap extends AppCompatActivity /*implements OnMapReady
 
         }*/
 
-     /*   mapFrag = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFrag.getMapAsync(this);*/
+        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
+        Log.i(TAG, "onCreate: display map in palace jewe: ");
+
     }
 
     @Override
@@ -159,6 +168,37 @@ public class NearbyActivityMap extends AppCompatActivity /*implements OnMapReady
       /*  if (mGoogleApiClient != null) {
             LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
         }*/
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                //NavUtils.navigateUpFromSameTask(this);
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onMapClick(LatLng latLng) {
+
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        return false;
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        if (googleMap == null)return;
+        Log.i(TAG, "onCreate: display map in palace jewe 12345: ");
+        LatLng currentLocation = new LatLng(14.1699121, 121.24406309999995);//14.1699121 121.24406309999995
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 12));
     }
 
     /**
@@ -519,19 +559,4 @@ public class NearbyActivityMap extends AppCompatActivity /*implements OnMapReady
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(jsonObjReq, tag_string_req);
     }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        switch (id) {
-            // Respond to the action bar's Up/Home button
-            case android.R.id.home:
-                //NavUtils.navigateUpFromSameTask(this);
-                onBackPressed();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
 }

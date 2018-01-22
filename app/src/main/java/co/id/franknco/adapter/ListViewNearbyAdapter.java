@@ -60,6 +60,8 @@ public class ListViewNearbyAdapter extends BaseAdapter {
 
         TextView txtTitle = null;
         TextView txtAddress = null;
+        TextView txtOpening = null;
+        TextView txtKm = null;
         TextView txtTelp1 = null;
         TextView txtTelp2 = null;
         String txtLatitude = null;
@@ -73,20 +75,24 @@ public class ListViewNearbyAdapter extends BaseAdapter {
 
         txtTitle = (TextView) convertView.findViewById(R.id.txt_title);
         txtAddress = (TextView) convertView.findViewById(R.id.txt_address);
-        txtTelp1 = (TextView) convertView.findViewById(R.id.txt_telp1);
-        txtTelp2 = (TextView) convertView.findViewById(R.id.txt_telp2);
+        txtOpening = (TextView) convertView.findViewById(R.id.txt_open);
+        txtKm = (TextView) convertView.findViewById(R.id.txt_km);
+//        txtTelp1 = (TextView) convertView.findViewById(R.id.txt_telp1);
+//        txtTelp2 = (TextView) convertView.findViewById(R.id.txt_telp2);
 
 
         txtTitle.setText(resultp.get(NearbyActivityMap.TITLE));
         stringAddress = resultp.get(NearbyActivityMap.ADDRESS);
         txtAddress.setText(resultp.get(NearbyActivityMap.ADDRESS));
-        txtTelp1.setText(resultp.get(NearbyActivityMap.TELP1));
-        txtTelp2.setText(resultp.get(NearbyActivityMap.TELP2));
-        txtLatitude = resultp.get(NearbyActivityMap.LATITUDE);
-        txtLongitude = resultp.get(NearbyActivityMap.LONGITUDE);
+
+//        txtTelp1.setText(resultp.get(NearbyActivityMap.TELP1));
+//        txtTelp2.setText(resultp.get(NearbyActivityMap.TELP2));
+//        txtLatitude = resultp.get(NearbyActivityMap.LATITUDE);
+//        txtLongitude = resultp.get(NearbyActivityMap.LONGITUDE);
         final String finaltxtAddress = stringAddress;
         final String finalTxtLatitude = txtLatitude;
         final String finalTxtLongitude = txtLongitude;
+
 
         convertView.setOnClickListener(new View.OnClickListener() {
 

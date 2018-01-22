@@ -1,4 +1,7 @@
 <resources>
+
+    <string name="google_api_key">AIzaSyD7ICzl-EfvraMPIZK7mD6I5w9H0-YQJxk</string>
+
     <string name="app_name">Central Mega Kencana</string>
     <string name="product_name">Product Name</string>
     <string name="txt_image_slider">Image Slideshow</string>

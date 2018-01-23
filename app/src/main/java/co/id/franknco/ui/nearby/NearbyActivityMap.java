@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
@@ -23,10 +24,13 @@ import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -49,6 +53,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
@@ -71,14 +76,14 @@ import co.id.franknco.controller.ConfigurasiAPI;
 import co.id.franknco.controller.GetUrlName;
 import co.id.franknco.controller.SessionManager;
 import co.id.franknco.crypto.Temp3DES;
+import co.id.franknco.model.General;
 import co.id.franknco.ui.login.LoginActivity;
 import retrofit2.http.PUT;
 
-public class NearbyActivityMap extends AppCompatActivity implements  OnMapReadyCallback,
-        GoogleMap.OnMarkerClickListener,
-        GoogleMap.OnMapClickListener,
-        AppBarLayout.OnOffsetChangedListener{
+import static android.widget.LinearLayout.*;
 
+public class NearbyActivityMap extends AppCompatActivity implements OnMapReadyCallback,
+        AppBarLayout.OnOffsetChangedListener{
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -114,7 +119,10 @@ public class NearbyActivityMap extends AppCompatActivity implements  OnMapReadyC
     private Temp3DES temp3DES;
     private int key;
     private String keyoutlet;
-    ArrayList<HashMap<String, String>> arraylist;
+    private GoogleMap googleMap;
+    private LatLngBounds bounds;
+
+    ArrayList<HashMap<String, String>> arraylist = new ArrayList<HashMap<String, String>>();
 
     public static String TITLE = "TITLE";
     public static String ADDRESS = "ADDRESS";
@@ -151,6 +159,11 @@ public class NearbyActivityMap extends AppCompatActivity implements  OnMapReadyC
             keyoutlet = "4";
 
         }
+
+        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+        appBarLayout.addOnOffsetChangedListener(this);
+
         getAddressBranch(keyoutlet);
         setupToolbar(keyoutlet);
       /*  String latitudeDest = this.getIntent().getStringExtra("latitude_dest");
@@ -163,10 +176,6 @@ public class NearbyActivityMap extends AppCompatActivity implements  OnMapReadyC
         }catch (NullPointerException e){
 
         }*/
-
-        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-        appBarLayout.addOnOffsetChangedListener(this);
 
         setClickEvents();
 
@@ -202,23 +211,26 @@ public class NearbyActivityMap extends AppCompatActivity implements  OnMapReadyC
     }
 
     @Override
-    public void onMapClick(LatLng latLng) {
-
+    public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+        if (collapsingToolbarLayout.getHeight() + verticalOffset < 2 * ViewCompat.getMinimumHeight(collapsingToolbarLayout)) {
+            swipeRefreshLayout.setEnabled(false);
+            DisplayMetrics displaymetrics = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+            int height = displaymetrics.heightPixels;
+            ViewGroup.LayoutParams params = mapFragment.getView().getLayoutParams();
+            params.height = height;
+            mapFragment.getView().setLayoutParams(params);
+        } else {
+            swipeRefreshLayout.setEnabled(true);
+        }
     }
 
-    @Override
-    public boolean onMarkerClick(Marker marker) {
-        return false;
-    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         if (googleMap == null)return;
-        Log.i(TAG, "onCreate: display map in palace jewe 12345: ");
-        LatLng currentLocation = new LatLng(14.1699121, 121.24406309999995);//14.1699121 121.24406309999995
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 12));
+        this.googleMap = googleMap;
     }
-
 
     /**
      * MAP
@@ -439,6 +451,8 @@ public class NearbyActivityMap extends AppCompatActivity implements  OnMapReadyC
      */
     //MINTA WISELY BUATIN
     public void getAddressBranch(String code_place) {
+        final LatLngBounds.Builder builder = new LatLngBounds.Builder();
+
         String tag_string_req = "req_getaddressbranch";
         String DataMSG = "map";
         DataMSG = temp3DES.encrypt(code_place);
@@ -460,7 +474,6 @@ public class NearbyActivityMap extends AppCompatActivity implements  OnMapReadyC
 
                             if (code.equals("2010")) {
 
-                                arraylist = new ArrayList<HashMap<String, String>>();
                                 JSONArray cardlist = response.getJSONArray("msg");
                                  for (int i = 0; i < cardlist.length(); i++) {
 
@@ -475,13 +488,35 @@ public class NearbyActivityMap extends AppCompatActivity implements  OnMapReadyC
 
                                     arraylist.add(map);
 
-                                }
+                                    double lat = Double.valueOf(temp3DES.decrypt(cardlist.getJSONObject(i).getString("latitude")).isEmpty()
+                                            ? "0.0" : temp3DES.decrypt(cardlist.getJSONObject(i).getString("latitude")));
+                                    double lon = Double.valueOf(temp3DES.decrypt(cardlist.getJSONObject(i).getString("longitude")).isEmpty()
+                                            ? "0.0" : temp3DES.decrypt(cardlist.getJSONObject(i).getString("longitude")));
+
+                                    if (lat != 0.0 & lon != 0.0) {
+                                        MarkerOptions sMarker = CreateMarker(
+                                                temp3DES.decrypt(cardlist.getJSONObject(i).getString("branch_name")),
+                                                lat, lon);
+                                        googleMap.addMarker(sMarker);
+                                        builder.include(sMarker.getPosition());
+                                        bounds = builder.build();
+
+                                        Log.i(TAG, "onResponse: Get location all data in web service: " + sMarker.getPosition());
+                                    }
+                                 }
 
                                 if (arraylist != null) {
                                     _proCollageList.setVisibility(View.GONE);
                                     _listCollege.setVisibility(View.VISIBLE);
                                       ListViewNearbyAdapter adapter = new ListViewNearbyAdapter(NearbyActivityMap.this, arraylist);
                                     _listCollege.setAdapter(adapter);
+
+                                   if (bounds != null) {
+                                       int width = getResources().getDisplayMetrics().widthPixels;
+                                       int height = getResources().getDisplayMetrics().heightPixels;
+                                       int padding = (int) (width * 0.27);
+                                       googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, width, height, padding));
+                                   }
                                 }
 
                             } else if (code.equals("1920")) {
@@ -589,12 +624,11 @@ public class NearbyActivityMap extends AppCompatActivity implements  OnMapReadyC
         AppController.getInstance().addToRequestQueue(jsonObjReq, tag_string_req);
     }
 
-    @Override
-    public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-        if (collapsingToolbarLayout.getHeight() + verticalOffset < 2 * ViewCompat.getMinimumHeight(collapsingToolbarLayout)) {
-            swipeRefreshLayout.setEnabled(false);
-        } else {
-            swipeRefreshLayout.setEnabled(true);
-        }
+    private MarkerOptions CreateMarker(String title, double latitude, double longitude) {
+        LatLng sLocation = new LatLng(latitude, longitude);
+        MarkerOptions markerStore = new MarkerOptions();
+        markerStore.title(title);
+        markerStore.position(sLocation);
+        return markerStore;
     }
 }

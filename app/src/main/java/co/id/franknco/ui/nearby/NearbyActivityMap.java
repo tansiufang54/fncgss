@@ -14,9 +14,13 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -72,7 +76,8 @@ import retrofit2.http.PUT;
 
 public class NearbyActivityMap extends AppCompatActivity implements  OnMapReadyCallback,
         GoogleMap.OnMarkerClickListener,
-        GoogleMap.OnMapClickListener {
+        GoogleMap.OnMapClickListener,
+        AppBarLayout.OnOffsetChangedListener{
 
 
     @BindView(R.id.toolbar)
@@ -83,6 +88,12 @@ public class NearbyActivityMap extends AppCompatActivity implements  OnMapReadyC
     ImageView _imgLogo;
     @BindView(R.id.listNearby)
     ListView _listCollege;
+    @BindView(R.id.ll_card_list)
+    SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.sd_collapsing_toolbar)
+    CollapsingToolbarLayout collapsingToolbarLayout;
+    @BindView(R.id.sd_appbar_layout)
+    AppBarLayout appBarLayout;
 
     public static final String TAG = NearbyActivity.class.getSimpleName();
 
@@ -155,15 +166,22 @@ public class NearbyActivityMap extends AppCompatActivity implements  OnMapReadyC
 
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        appBarLayout.addOnOffsetChangedListener(this);
 
-        Log.i(TAG, "onCreate: display map in palace jewe: ");
+        setClickEvents();
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        appBarLayout.addOnOffsetChangedListener(this);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-
+        if (appBarLayout != null)appBarLayout.removeOnOffsetChangedListener(this);
         //stop location updates when Activity is no longer active
       /*  if (mGoogleApiClient != null) {
             LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
@@ -200,6 +218,7 @@ public class NearbyActivityMap extends AppCompatActivity implements  OnMapReadyC
         LatLng currentLocation = new LatLng(14.1699121, 121.24406309999995);//14.1699121 121.24406309999995
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 12));
     }
+
 
     /**
      * MAP
@@ -375,6 +394,16 @@ public class NearbyActivityMap extends AppCompatActivity implements  OnMapReadyC
         line = mGoogleMap.addPolyline(options); //add Polyline
     }
 */
+
+   private void setClickEvents() {
+       swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+           @Override
+           public void onRefresh() {
+               swipeRefreshLayout.setRefreshing(false);
+           }
+       });
+   }
+
     private void setupToolbar(String outlet) {
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
@@ -558,5 +587,14 @@ public class NearbyActivityMap extends AppCompatActivity implements  OnMapReadyC
 
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(jsonObjReq, tag_string_req);
+    }
+
+    @Override
+    public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+        if (collapsingToolbarLayout.getHeight() + verticalOffset < 2 * ViewCompat.getMinimumHeight(collapsingToolbarLayout)) {
+            swipeRefreshLayout.setEnabled(false);
+        } else {
+            swipeRefreshLayout.setEnabled(true);
+        }
     }
 }

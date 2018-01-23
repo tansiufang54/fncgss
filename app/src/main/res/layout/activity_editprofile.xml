@@ -21,12 +21,10 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
         android:paddingTop="56dp">
 
         <!-- NEXT PAGE -->
@@ -34,38 +32,54 @@
             android:id="@+id/linearlayout_signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp"
             android:orientation="vertical"
             android:visibility="visible">
             <!--  JUDUL Label -->
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
                 android:textColorHint="@color/colorAccent">
 
                 <TextView
                     android:id="@+id/personalInformation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Edit profile"
+                    android:text="@string/edit_profile"
                     android:textColor="@color/colorAccent"
-                    android:textSize="36dp" />
+                    android:textSize="30sp" />
             </android.support.design.widget.TextInputLayout>
             <!-- Name Label -->
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="65dp"
                 android:textColorHint="@color/colorAccent">
 
                 <EditText
-                    android:id="@+id/input_name"
+                    android:id="@+id/input_firstname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Name"
+                    android:hint="@string/first_name"
                     android:inputType="textPersonName"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorAccent" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:textColorHint="@color/colorAccent">
+
+                <EditText
+                    android:id="@+id/input_lastname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/last_name"
+                    android:inputType="textPersonName"
+                    android:textSize="16sp"
                     android:textColor="@color/colorAccent" />
             </android.support.design.widget.TextInputLayout>
 
@@ -73,17 +87,17 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="24dp"
                 android:textColorHint="@color/colorAccent">
 
                 <EditText
                     android:id="@+id/input_dateofbirth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Date of Birth (25011991)"
+                    android:hint="@string/dd_mm_yyyy"
                     android:clickable="true"
-                    android:focusable="false"
+                    android:focusable="true"
+                    android:textSize="16sp"
                     android:textColor="@color/colorAccent" />
             </android.support.design.widget.TextInputLayout>
 
@@ -91,16 +105,16 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="24dp"
                 android:textColorHint="@color/colorAccent">
 
                 <EditText
                     android:id="@+id/input_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Address"
+                    android:hint="@string/address"
                     android:inputType="textPostalAddress"
+                    android:textSize="16sp"
                     android:textColor="@color/colorAccent" />
             </android.support.design.widget.TextInputLayout>
 
@@ -108,19 +122,21 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="24dp"
                 android:textColorHint="@color/colorAccent">
 
                 <EditText
                     android:id="@+id/input_mobile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Phone Number"
+                    android:hint="@string/phone_number"
                     android:inputType="number"
                     android:maxLength="12"
+                    android:textSize="16sp"
                     android:textColor="@color/colorAccent" />
             </android.support.design.widget.TextInputLayout>
+
+
 
             <!-- No Card -->
           <!--  <android.support.design.widget.TextInputLayout
@@ -166,16 +182,16 @@
             <!-- Signup Button -->
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btn_save_editprofile"
-                android:layout_width="wrap_content"
+                android:layout_width="104dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:layout_marginTop="24dp"
-                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_marginTop="32dp"
+                android:layout_gravity="end"
                 android:background="@drawable/button_selector"
-                android:text="Save"
+                android:text="@string/save"
+                android:textAllCaps="false"
                 android:textColor="@color/white" />
 
         </LinearLayout>
 
-    </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

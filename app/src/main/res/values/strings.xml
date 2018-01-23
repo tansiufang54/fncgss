@@ -34,7 +34,7 @@ Free usually isn’t really free. Most of these sites offer a very basic option 
     <string name="err06">User and Token not Match</string>
 
     <string name="sign_up_word">New to CMK? <b>Sign up!</b></string>
-    <string name="sign_up_word1"><b>New to CMK?</b></string>
+    <string name="sign_up_word1"><b>New to CMK? </b></string>
     <string name="sign_up_word2"><b>Sign up!</b></string>
     <string name="issued"><b>Issued</b></string>
     <string name="expired"><b>Expired</b></string>
@@ -60,5 +60,8 @@ Free usually isn’t really free. Most of these sites offer a very basic option 
     <string name="greater_than_sign"><![CDATA[>]]></string>
     <string name="forward">forward</string>
     <string name="old_password">Old Password</string>
+    <string name="definition">Definition</string>
+    <string name="example_application">Example application</string>
+    <string name="description_default">Description</string>
 
 </resources>

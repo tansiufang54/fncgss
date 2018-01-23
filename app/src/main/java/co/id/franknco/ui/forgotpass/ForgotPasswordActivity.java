@@ -52,18 +52,11 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 }
             }
         });
+
+
     }
 
-    private void setupToolbar() {
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        if (getSupportActionBar() == null) {
-            throw new IllegalStateException("Activity must implement toolbar");
-        }
-    }
 
     public void forgotpass() throws UnsupportedEncodingException {
         Log.d(TAG, "ForgotPass");
@@ -113,6 +106,17 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
 
         return valid;
+    }
+
+    private void setupToolbar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        if (getSupportActionBar() == null) {
+            throw new IllegalStateException("Activity must implement toolbar");
+        }
     }
 
     @Override

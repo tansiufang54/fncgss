@@ -27,8 +27,7 @@ import co.id.franknco.ui.settings.SettingsActivity;
  */
 
 public class PrivacyPolicyActivity extends AppCompatActivity {
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
+    @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.input_policy_privacy)
     TextView _txtPrivacyPolicy;
    /* @BindView(R.id.btn_privacy_policy)

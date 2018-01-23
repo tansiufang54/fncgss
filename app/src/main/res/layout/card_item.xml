@@ -10,42 +10,42 @@
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <!-- Gift Card View -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_vertical_margin"
-                android:background="@android:color/transparent"
-              >
+                android:background="@android:color/transparent">
 
                 <ImageView
-                    android:adjustViewBounds="true"
                     android:id="@+id/ci_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/creditcard"
-                    />
+                    android:layout_width="380dp"
+                    android:layout_height="200dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="24dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/card_bg"
+                    android:foregroundGravity="center"
+                    android:padding="10dp"
+                    android:scaleType="centerCrop" />
 
                 <co.id.franknco.controller.MyTextView
                     android:id="@+id/ci_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@id/ci_image"
-                    android:layout_marginBottom="@dimen/activity_vertical_margin"
-                    android:layout_marginRight="24dp"
-                    android:gravity="center|right"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginEnd="50dp"
+
+                    android:gravity="center|end"
                     android:text="1234 5678 9101 2200"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/warmgray"
                     android:textSize="@dimen/text_size_button"
                     android:textStyle="bold" />
 
@@ -55,18 +55,18 @@
             <!-- Card Information -->
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/white"
-                >
-
+                android:visibility="gone">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:paddingBottom="22dp"
+                    android:paddingTop="30dp"
+
                     android:paddingLeft="24dp"
                     android:paddingRight="24dp"
-                    android:paddingTop="24dp"
                     android:weightSum="3.5">
                     <!-- Card Amount -->
                     <LinearLayout
@@ -84,21 +84,19 @@
                             android:gravity="center"
                             android:text="10.000.000"
                             android:textColor="@color/colorAccent"
-                            android:textSize="24dp"
+                            android:textSize="24sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="2"
-                        android:weightSum="2.2"
+                        android:layout_weight="4"
                         android:orientation="vertical">
                         <!-- Issued -->
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
                             <co.id.franknco.controller.MyTextView2
@@ -106,10 +104,12 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:gravity="left|center"
+                                android:gravity="start|center"
                                 android:text="Issued"
                                 android:textColor="@color/colorAccent"
-                                android:textSize="@dimen/text_size"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="5dp"
+                                android:textSize="14sp"
                                 android:textStyle="bold" />
 
                             <co.id.franknco.controller.MyTextView
@@ -117,31 +117,33 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:gravity="right|center"
+                                android:gravity="end|center"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
                                 android:text="dd / Mmm / yy"
                                 android:textColor="@color/colorAccent"
-                                android:textSize="@dimen/text_size" />
+                                android:textSize="14sp" />
 
                         </LinearLayout>
                         <android.support.v4.widget.Space
                             android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="0.2"
+                            android:layout_height="wrap_content"
                             android:background="@color/colorAccent"/>
                         <!-- Expired -->
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
                             android:orientation="horizontal">
                             <co.id.franknco.controller.MyTextView2
                                 android:layout_width="0dp"
                                 android:layout_weight="1"
                                 android:layout_height="match_parent"
-                                android:gravity="left|center"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:gravity="start|center"
                                 android:textStyle="bold"
                                 android:text="Expired"
-                                android:textSize="@dimen/text_size"
+                                android:textSize="14sp"
                                 android:textColor="@color/colorAccent"/>
                             <co.id.franknco.controller.MyTextView
                                 android:id="@+id/ci_expired"
@@ -149,9 +151,11 @@
                                 android:layout_width="0dp"
                                 android:layout_weight="1"
                                 android:layout_height="match_parent"
-                                android:gravity="right|center"
+                                android:gravity="end|center"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
                                 android:text="dd / Mmm / yy"
-                                android:textSize="@dimen/text_size"/>
+                                android:textSize="14sp"/>
 
                         </LinearLayout>
 
@@ -161,28 +165,31 @@
 
             <android.support.v4.widget.Space
                 android:layout_width="match_parent"
-                android:layout_height="8dp"/>
+                android:layout_height="8dp"
+                android:visibility="gone"/>
 
             <!-- Card History -->
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/white"
-                >
+                android:visibility="gone">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingBottom="22dp"
+                    android:paddingBottom="18dp"
+                    android:paddingTop="18dp"
                     android:paddingLeft="24dp"
-                    android:paddingRight="24dp"
-                    android:paddingTop="24dp">
+                    android:paddingRight="24dp">
                     <co.id.franknco.controller.MyTextView2
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="History"
                         android:textStyle="bold"
-                        android:textSize="@dimen/text_size"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="14sp"
                         android:textColor="@color/colorAccent"
                         android:layout_marginBottom="8dp"/>
 
@@ -190,8 +197,7 @@
                         android:id="@+id/lv_cardHistory"
                         android:layout_width="match_parent"
                         android:layout_height="fill_parent"
-                        android:visibility="gone"
-                        />
+                        android:visibility="gone"/>
                     <co.id.franknco.controller.MyTextView
                         android:id="@+id/tv_cardHistory_Empty"
                         android:layout_width="match_parent"
@@ -206,7 +212,8 @@
             <android.support.v4.widget.Space
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="@android:color/transparent"/>
+                android:background="@android:color/transparent"
+                android:visibility="gone"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 

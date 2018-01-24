@@ -3,213 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:fitsSystemWindows="true">
-    <include layout="@layout/layout_card_empty"
-        android:visibility="gone"/>
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/app_bar_card"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:fitsSystemWindows="true"
-        android:visibility="visible">
-
-            <android.support.design.widget.CollapsingToolbarLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
-                <android.support.v4.view.ViewPager
-                    android:id="@+id/viewPager"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="visible"/>
-            </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/nsv_card_detail"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <!-- Card Information -->
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/white"
-                android:visibility="visible">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingBottom="22dp"
-                    android:paddingTop="30dp"
-
-                    android:paddingLeft="24dp"
-                    android:paddingRight="24dp"
-                    android:weightSum="3.5">
-                    <!-- Card Amount -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_gravity="center"
-                        android:layout_weight="1.5"
-                        android:gravity="center"
-                        android:paddingBottom="17dp">
-
-                        <co.id.franknco.controller.MyTextView
-                            android:id="@+id/ci_saldo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="10.000.000"
-                            android:textColor="@color/colorAccent"
-                            android:textSize="24sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="4"
-                        android:orientation="vertical">
-                        <!-- Issued -->
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <co.id.franknco.controller.MyTextView2
-                                android:id="@+id/myTextView"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:gravity="start|center"
-                                android:text="Issued"
-                                android:textColor="@color/colorAccent"
-                                android:paddingTop="10dp"
-                                android:paddingBottom="5dp"
-                                android:textSize="14sp"
-                                android:textStyle="bold" />
-
-                            <co.id.franknco.controller.MyTextView
-                                android:id="@+id/ci_issued"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:gravity="end|center"
-                                android:paddingTop="10dp"
-                                android:paddingBottom="10dp"
-                                android:text="dd / Mmm / yy"
-                                android:textColor="@color/colorAccent"
-                                android:textSize="14sp" />
-
-                        </LinearLayout>
-                        <android.support.v4.widget.Space
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@color/colorAccent"/>
-                        <!-- Expired -->
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                            <co.id.franknco.controller.MyTextView2
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="match_parent"
-                                android:paddingTop="10dp"
-                                android:paddingBottom="10dp"
-                                android:gravity="start|center"
-                                android:textStyle="bold"
-                                android:text="Expired"
-                                android:textSize="14sp"
-                                android:textColor="@color/colorAccent"/>
-                            <co.id.franknco.controller.MyTextView
-                                android:id="@+id/ci_expired"
-                                android:textColor="@color/colorAccent"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="match_parent"
-                                android:gravity="end|center"
-                                android:paddingTop="10dp"
-                                android:paddingBottom="10dp"
-                                android:text="dd / Mmm / yy"
-                                android:textSize="14sp"/>
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-
-            <android.support.v4.widget.Space
-                android:layout_width="match_parent"
-                android:layout_height="8dp"
-                android:visibility="visible"/>
-
-            <!-- Card History -->
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/white"
-                android:visibility="visible">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingBottom="18dp"
-                    android:paddingTop="18dp"
-                    android:paddingLeft="24dp"
-                    android:paddingRight="24dp">
-                    <co.id.franknco.controller.MyTextView2
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="History"
-                        android:textStyle="bold"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:textSize="14sp"
-                        android:textColor="@color/colorAccent"
-                        android:layout_marginBottom="8dp"/>
-
-                    <ListView
-                        android:id="@+id/lv_cardHistory"
-                        android:layout_width="match_parent"
-                        android:layout_height="fill_parent"
-                        android:visibility="gone"/>
-                    <co.id.franknco.controller.MyTextView
-                        android:id="@+id/tv_cardHistory_Empty"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="NO TRANSACTION FOUND"
-                        android:textColor="@color/secondary_dark"
-                        android:visibility="gone"/>
-
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-
-            <android.support.v4.widget.Space
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="@android:color/transparent"
-                android:visibility="visible"/>
-        </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floating_action_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_action_add"
-        app:backgroundTint="@color/colorAccent"
-        app:layout_anchor="@id/nsv_card_detail"
-        app:layout_anchorGravity="bottom|end|right"
-        android:layout_marginBottom="72dp"
-        android:layout_marginEnd="24dp"
-        />
+    android:fitsSystemWindows="true"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp">
     <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
@@ -217,5 +13,213 @@
         android:paddingEnd="8dp"
         android:paddingStart="8dp"
         android:background="@color/backgroundcard"
-        android:visibility="gone"/>
+        android:visibility="gone">
+    </android.support.v4.widget.SwipeRefreshLayout>
+        <include layout="@layout/layout_card_empty"
+            android:visibility="gone"/>
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar_card"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:fitsSystemWindows="true"
+            android:visibility="visible">
+
+                <android.support.design.widget.CollapsingToolbarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/viewPager"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible"/>
+                </android.support.design.widget.CollapsingToolbarLayout>
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/nsv_card_detail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!-- Card Information -->
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/white"
+                    android:visibility="visible">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingBottom="22dp"
+                        android:paddingTop="30dp"
+
+                        android:paddingLeft="24dp"
+                        android:paddingRight="24dp"
+                        android:weightSum="3.5">
+                        <!-- Card Amount -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.5"
+                            android:gravity="center"
+                            android:paddingBottom="17dp">
+
+                            <co.id.franknco.controller.MyTextView
+                                android:id="@+id/ci_saldo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="10.000.000"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="24sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="4"
+                            android:orientation="vertical">
+                            <!-- Issued -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <co.id.franknco.controller.MyTextView2
+                                    android:id="@+id/myTextView"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="start|center"
+                                    android:text="Issued"
+                                    android:textColor="@color/colorAccent"
+                                    android:paddingTop="10dp"
+                                    android:paddingBottom="5dp"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                                <co.id.franknco.controller.MyTextView
+                                    android:id="@+id/ci_issued"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="end|center"
+                                    android:paddingTop="10dp"
+                                    android:paddingBottom="10dp"
+                                    android:text="dd / Mmm / yy"
+                                    android:textColor="@color/colorAccent"
+                                    android:textSize="14sp" />
+
+                            </LinearLayout>
+                            <android.support.v4.widget.Space
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/colorAccent"/>
+                            <!-- Expired -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <co.id.franknco.controller.MyTextView2
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="match_parent"
+                                    android:paddingTop="10dp"
+                                    android:paddingBottom="10dp"
+                                    android:gravity="start|center"
+                                    android:textStyle="bold"
+                                    android:text="Expired"
+                                    android:textSize="14sp"
+                                    android:textColor="@color/colorAccent"/>
+                                <co.id.franknco.controller.MyTextView
+                                    android:id="@+id/ci_expired"
+                                    android:textColor="@color/colorAccent"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="match_parent"
+                                    android:gravity="end|center"
+                                    android:paddingTop="10dp"
+                                    android:paddingBottom="10dp"
+                                    android:text="dd / Mmm / yy"
+                                    android:textSize="14sp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v4.widget.Space
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:visibility="visible"/>
+
+                <!-- Card History -->
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/white"
+                    android:visibility="visible">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingBottom="18dp"
+                        android:paddingTop="18dp"
+                        android:paddingLeft="24dp"
+                        android:paddingRight="24dp">
+                        <co.id.franknco.controller.MyTextView2
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="History"
+                            android:textStyle="bold"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:textSize="14sp"
+                            android:textColor="@color/colorAccent"
+                            android:layout_marginBottom="8dp"/>
+
+                        <ListView
+                            android:id="@+id/lv_cardHistory"
+                            android:layout_width="match_parent"
+                            android:layout_height="fill_parent"
+                            android:visibility="gone"/>
+                        <co.id.franknco.controller.MyTextView
+                            android:id="@+id/tv_cardHistory_Empty"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="NO TRANSACTION FOUND"
+                            android:textColor="@color/secondary_dark"
+                            android:visibility="gone"/>
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v4.widget.Space
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@android:color/transparent"
+                    android:visibility="visible"/>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floating_action_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_action_add"
+            app:backgroundTint="@color/colorAccent"
+            app:layout_anchor="@id/nsv_card_detail"
+            app:layout_anchorGravity="bottom|end|right"
+            android:layout_marginBottom="72dp"
+            android:layout_marginEnd="24dp"
+            />
+
 </android.support.design.widget.CoordinatorLayout>

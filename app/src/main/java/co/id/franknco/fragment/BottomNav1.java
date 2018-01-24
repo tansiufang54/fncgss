@@ -6,10 +6,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
@@ -18,6 +21,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -75,8 +80,14 @@ public class BottomNav1 extends Fragment implements SwipeRefreshLayout.OnRefresh
     ListView lvhis;
     @BindView(R.id.tv_cardHistory_Empty)
     TextView chEmpty;
+    @BindView(R.id.ll_empty_card)
+    LinearLayout emptyCardLayout;
+    @BindView(R.id.cv_add_card)
+    CardView addCard;
 
-
+    private FloatingActionButton myFab;
+    private AppBarLayout appBarLayout;
+    private NestedScrollView nestedScrollView;
     private JSONArray cardDataArray = new JSONArray();
     private SwipeRefreshLayout swipeRefreshLayout;
     private ProgressDialog dialog;
@@ -132,12 +143,15 @@ public class BottomNav1 extends Fragment implements SwipeRefreshLayout.OnRefresh
         temp3DES = new Temp3DES(getActivity());
         interfaceHelper = InterfaceHelper.getInstance();
         ButterKnife.bind(this, rootView);
-        viewPager.setPadding(20, 0, 20, 0);
         viewPager.setClipToPadding(false);
-        viewPager.setPageMargin(10);
+        viewPager.setPadding(60, 0, 60, 0);
+        viewPager.setPageMargin(30);
         getCardListUser();
         swipeRefreshLayout.setRefreshing( false );
         swipeRefreshLayout.setEnabled( false );
+        nestedScrollView = (NestedScrollView) rootView.findViewById(R.id.nsv_card_detail);
+        appBarLayout    = (AppBarLayout) rootView.findViewById(R.id.app_bar_card);
+
 
         /*swipeRefreshLayout.post(new Runnable() {
                                     @Override
@@ -152,7 +166,7 @@ public class BottomNav1 extends Fragment implements SwipeRefreshLayout.OnRefresh
 
         // setupAdapter();
 
-        FloatingActionButton myFab = (FloatingActionButton) rootView.findViewById(R.id.floating_action_button);
+        myFab = (FloatingActionButton) rootView.findViewById(R.id.floating_action_button);
         myFab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 CustomDialogAdd_Card myCD = new CustomDialogAdd_Card(getActivity()) {
@@ -164,6 +178,16 @@ public class BottomNav1 extends Fragment implements SwipeRefreshLayout.OnRefresh
                 myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 getActivity().finish();
                 startActivity(myintent);*/
+            }
+        });
+
+        addCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CustomDialogAdd_Card myCD = new CustomDialogAdd_Card(getActivity()) {
+                };
+
+                myCD.show();
             }
         });
         return rootView;
@@ -196,14 +220,25 @@ public class BottomNav1 extends Fragment implements SwipeRefreshLayout.OnRefresh
                         try {
                             String code = response.getString("code");
                             String data = response.getString("msg");
-                            Log.i("TAG", "onResponse: " + data);
                             if (code.equals("0710")) {
                              try {
                                  cardDataArray = new JSONArray(data);
                                  MyCustomPagerAdapter2 adapter2 = new MyCustomPagerAdapter2(getActivity(), cardDataArray);
                                  viewPager.setAdapter(adapter2);
-                                 setCardData(0);
-                                 viewPager.addOnPageChangeListener(replaceData());
+                                 if(cardDataArray.length() == 0){
+                                     emptyCardLayout.setVisibility(View.VISIBLE);
+                                     appBarLayout.setVisibility(View.GONE);
+                                     myFab.setVisibility(View.GONE);
+                                     nestedScrollView.setVisibility(View.GONE);
+                                 }
+                                 else if(cardDataArray.length() > 0){
+                                     emptyCardLayout.setVisibility(View.GONE);
+                                     appBarLayout.setVisibility(View.VISIBLE);
+                                     myFab.setVisibility(View.VISIBLE);
+                                     nestedScrollView.setVisibility(View.VISIBLE);
+                                     setCardData(0);
+                                     viewPager.addOnPageChangeListener(replaceData());
+                                 }
                              }catch (NullPointerException e){
 
                              }

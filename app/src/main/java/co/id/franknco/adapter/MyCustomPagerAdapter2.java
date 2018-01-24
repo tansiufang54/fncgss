@@ -2,6 +2,11 @@ package co.id.franknco.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.GradientDrawable;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -81,32 +86,21 @@ public class MyCustomPagerAdapter2 extends PagerAdapter {
 
         ImageView cardImages = (ImageView) itemView.findViewById(R.id.ci_image);
         TextView cardNumber = (TextView) itemView.findViewById(R.id.ci_number);
-        TextView cardSaldo = (TextView) itemView.findViewById(R.id.ci_saldo);
-        TextView cardIssued = (TextView) itemView.findViewById(R.id.ci_issued);
-        TextView cardExpired = (TextView) itemView.findViewById(R.id.ci_expired);
 
         String cardNum = "";
 
         try {
+            GradientDrawable drawable = (GradientDrawable) cardImages.getBackground();
             //cardImages.setImageBitmap((interfaceHelper.decodeBase64(jobj.getString("front_view"))));
+            if(position%3 == 1){
+                drawable.setColor(ContextCompat.getColor(activity, R.color.gold));
+            }
+            if(position%3 == 2){
+                drawable.setColor(ContextCompat.getColor(activity, R.color.dark_blue));
+            }
+            //cardImages.getBackground().setColorFilter(ContextCompat.getColor(activity, R.color.gold), PorterDuff.Mode.SRC_IN);
+
             cardNum = temp3DES.decrypt(jobj.getString("card_number"));
-            String csaldo = temp3DES.decrypt_cr(temp3DES.decrypt(jobj.getString("x175")),temp3DES.decrypt_cardkey(jobj.getString("card_key")));
-            cardSaldo.setText("Rp. "+ interfaceHelper.numberFormat(Integer.parseInt(csaldo)));
-
-            String activationDate = temp3DES.decrypt(jobj.getString("activation_date"));
-            String yyAD = activationDate.substring(2,4);
-            String mmmAD = interfaceHelper.monthConvert(activationDate.substring(5,7));
-            String ddAD = activationDate.substring(8,10);
-            cardIssued.setText(ddAD + " / " + mmmAD + " / " + yyAD);
-
-            String validDate = temp3DES.decrypt(jobj.getString("valid_until"));
-             String yy = validDate.substring(2,4);
-            String mmm = interfaceHelper.monthConvert(validDate.substring(5,7));
-            String dd = validDate.substring(8,10);
-            cardExpired.setText(dd + " / " + mmm + " / " + yy);
-
-
-
         }catch (JSONException je)
         {
             je.printStackTrace();
@@ -120,9 +114,6 @@ public class MyCustomPagerAdapter2 extends PagerAdapter {
         }
         cardNumber.setText(s.toString());
 
-        //get history here
-        getCardHistory(itemView, cardNum);
-
         container.addView(itemView,position);
         return itemView;
     }
@@ -133,81 +124,4 @@ public class MyCustomPagerAdapter2 extends PagerAdapter {
 
         container.removeView((View) object);
     }
-
-    private void getCardHistory(final View rootview, String card_number) {
-        String tag_string_req = "req_getpercardtransaction";
-        String DataMSG = "";
-        DataMSG = sessionManager.getUsername() + "#" + temp3DES.encrypt(card_number) + "#" + temp3DES.encrypt("15");
-        Map<String, String> postParam = new HashMap<String, String>();
-        postParam.put("code", "0800");
-        postParam.put("msg", DataMSG);
-        postParam.put("token", sessionManager.getTokenId());
-        final View thisRootView = rootview;
-
-        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
-                GetUrlName.URL, new JSONObject(postParam),
-                new Response.Listener<JSONObject>() {
-
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        try {
-                            String code = response.getString("code");
-                            String data = response.getString("msg");
-
-
-                            if (code.equals("0810")) {
-                                ListView lvhis = (ListView) rootview.findViewById(R.id.lv_cardHistory);
-                                lvhis.setVisibility(View.VISIBLE);
-                                rootview.findViewById(R.id.tv_cardHistory_Empty).setVisibility(View.GONE);
-
-                                ListViewHistoryAdapter2 historyAdapter = new ListViewHistoryAdapter2(activity, new JSONArray(data));
-                                lvhis.setAdapter(historyAdapter);
-                                //to show all listview content without scrolling
-                                interfaceHelper.setListViewHeight(lvhis);
-
-                            } else {
-                                rootview.findViewById(R.id.lv_cardHistory).setVisibility(View.GONE);
-                                rootview.findViewById(R.id.tv_cardHistory_Empty).setVisibility(View.VISIBLE);
-                            }
-                        } catch (JSONException e) {
-                            // JSON error
-                            e.printStackTrace();
-                        }
-
-                    }
-                }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                if (error != null) { //NULL DATA GIVEN
-                    Toast.makeText(activity.getApplicationContext(),
-                            "Connection Problem!", Toast.LENGTH_LONG).show();
-                } else { //DATA GIVEN
-                   /* Toast.makeText(getApplicationContext(),
-                            error.getMessage(), Toast.LENGTH_LONG).show();*/
-                }
-            }
-        }) {
-
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("Content-Type", "application/json; charset=utf-8");
-                return headers;
-            }
-
-        };
-        //for timeout and make data do not send twice
-        jsonObjReq.setRetryPolicy(new DefaultRetryPolicy(
-                GetUrlName.MY_SOCKET_TIMEOUT_MS,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-
-        // Adding request to request queue
-        AppController.getInstance().addToRequestQueue(jsonObjReq, tag_string_req);
-    }
-
-
-
 }

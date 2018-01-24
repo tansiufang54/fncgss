@@ -94,6 +94,7 @@ public class BottomNav1 extends Fragment implements SwipeRefreshLayout.OnRefresh
     SessionManager sessionManager;
     Temp3DES temp3DES;
     private InterfaceHelper interfaceHelper;
+    private MyCustomPagerAdapter2 adapter2;
 
     @Override
     public void onDestroy() {
@@ -223,8 +224,7 @@ public class BottomNav1 extends Fragment implements SwipeRefreshLayout.OnRefresh
                             if (code.equals("0710")) {
                              try {
                                  cardDataArray = new JSONArray(data);
-                                 MyCustomPagerAdapter2 adapter2 = new MyCustomPagerAdapter2(getActivity(), cardDataArray);
-                                 viewPager.setAdapter(adapter2);
+                                 setViewPagerAdapter(cardDataArray);
                                  if(cardDataArray.length() == 0){
                                      emptyCardLayout.setVisibility(View.VISIBLE);
                                      appBarLayout.setVisibility(View.GONE);
@@ -343,6 +343,13 @@ public class BottomNav1 extends Fragment implements SwipeRefreshLayout.OnRefresh
         AppController.getInstance().addToRequestQueue(jsonObjReq, tag_string_req);
     }
 
+
+    private void setViewPagerAdapter(JSONArray array) {
+        if(adapter2 == null){
+            adapter2 = new MyCustomPagerAdapter2(getActivity(), array);
+            viewPager.setAdapter(adapter2);
+        }else adapter2.notifyDataSetChanged();
+    }
     private ViewPager.OnPageChangeListener replaceData() {
         return new ViewPager.OnPageChangeListener() {
             @Override

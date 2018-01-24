@@ -8,6 +8,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
@@ -18,6 +19,13 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -58,8 +66,6 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void validationConnectivity() {
-
-
         if ( RootUtil.isDeviceRooted(this)) {
             CustomDialog myCD = new CustomDialog(this, "Caution!", "Application Error",red) {
                 @Override
@@ -71,7 +77,6 @@ public class SplashActivity extends AppCompatActivity {
                     finish();
                     startActivity(intent);
                 }
-
             };
             myCD.show();
         } else {

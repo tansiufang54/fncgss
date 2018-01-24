@@ -5,45 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
-    android:padding="8dip"
-    >
-
-    <TextView
+    android:padding="8dip">
+    <co.id.franknco.controller.MyTextView2
         android:id="@+id/firstLine"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignWithParentIfMissing="true"
-        android:clickable="false"
-        android:gravity="center_vertical"
+        android:layout_toStartOf="@+id/buttonDrop"
+        android:gravity="left|center"
+        android:lineSpacingExtra="6sp"
         android:text="@string/example_application"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
-
-
+        android:textColor="@color/greyish_brown"
+        android:textSize="16sp" />
+    <co.id.franknco.controller.MyTextView
+        android:id="@+id/secondLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/firstLine"
+        android:layout_marginTop="8dp"
+        android:layout_toStartOf="@+id/buttonDrop"
+        android:gravity="left|center"
+        android:lineSpacingExtra="6sp"
+        android:text="@string/example_application"
+        android:textColor="@color/greyish_brown"
+        android:textSize="12sp"
+        android:visibility="gone" />
     <Button
         android:id="@+id/buttonDrop"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_alignBottom="@+id/firstLine"
-        android:layout_alignParentEnd="true"
-        android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
+        android:background="@drawable/ic_selected_faq"
         android:clickable="true"
         android:contentDescription="@string/definition"
-        android:focusable="true" />
-
-    <TextView
-        android:id="@+id/secondLine"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_below="@+id/firstLine"
-        android:text="@string/definition"
-        android:textSize="12sp"
-        android:textColor="@color/base"
-        android:visibility="invisible"
-        android:clickable="false"/>
-
+        android:focusable="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
 </RelativeLayout>
 

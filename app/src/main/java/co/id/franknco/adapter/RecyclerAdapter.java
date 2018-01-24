@@ -1,6 +1,7 @@
 package co.id.franknco.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import co.id.franknco.R;
@@ -15,7 +18,13 @@ import co.id.franknco.R;
 
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
-    private List<String> values;
+    List<String> listDataHeader;
+    HashMap<String, List<String>> listDataChild;
+
+    public RecyclerAdapter(List<String> listDataHeader, HashMap<String, List<String>> listChildData) {
+        this.listDataChild = listChildData;
+        this.listDataHeader = listDataHeader;
+    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -35,20 +44,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         }
     }
 
-
-    public void add(int position, String item) {
-        values.add(position, item);
-        notifyItemInserted(position);
-    }
-
     public void remove(int position) {
-        values.remove(position);
         notifyItemRemoved(position);
     }
 
-    public RecyclerAdapter(List<String> myDataset) {
-        values = myDataset;
-    }
 
     @Override
     public RecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
@@ -64,9 +63,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        final String name = values.get(position);
-        final String def = "The point of this article is to help you grasp the big picture of getting six pack abs.";
+        String name = String.valueOf(listDataHeader.get(position));
+        String desc = TextUtils.join(", ", listDataChild.get(this.listDataHeader.get(position)));
         holder.txtHeader.setText(name);
+        holder.txtFooter.setText(desc);
         holder.buttonDrop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,23 +79,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 }
             }
         });
-        holder.txtHeader.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                remove(position);
-            }
-        });
-
-        holder.txtFooter.setText("" + def);
-
     }
 
     @Override
     public int getItemCount() {
-        return values.size();
+        return listDataChild.size();
     }
-
-
-
-
 }

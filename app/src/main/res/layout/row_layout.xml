@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -40,6 +38,12 @@
         android:contentDescription="@string/definition"
         android:focusable="true"
         android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"/>
+        android:layout_alignParentTop="true"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_accent"
+        android:layout_below="@+id/secondLine"
+        android:layout_marginTop="20dp"/>
 </RelativeLayout>
 

@@ -88,7 +88,7 @@ public class MyCustomPagerAdapter2 extends PagerAdapter {
         String cardNum = "";
 
         try {
-            cardImages.setImageBitmap((interfaceHelper.decodeBase64(jobj.getString("front_view"))));
+            //cardImages.setImageBitmap((interfaceHelper.decodeBase64(jobj.getString("front_view"))));
             cardNum = temp3DES.decrypt(jobj.getString("card_number"));
             String csaldo = temp3DES.decrypt_cr(temp3DES.decrypt(jobj.getString("x175")),temp3DES.decrypt_cardkey(jobj.getString("card_key")));
             cardSaldo.setText("Rp. "+ interfaceHelper.numberFormat(Integer.parseInt(csaldo)));

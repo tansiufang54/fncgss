@@ -44,6 +44,7 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
     compile 'org.apache.httpcomponents:httpclient-android:4.3.3'
+    compile "com.android.support:recyclerview-v7:25.3.1"
 
     /** slide */
     compile 'com.squareup.picasso:picasso:2.3.2'

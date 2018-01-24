@@ -2,9 +2,12 @@ package co.id.franknco.ui.faq;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,6 +16,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.id.franknco.R;
+import co.id.franknco.adapter.RecyclerAdapter;
 
 public class FAQActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)Toolbar toolbar;
@@ -22,17 +26,44 @@ public class FAQActivity extends AppCompatActivity {
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
 
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_faq);
+
+
         ButterKnife.bind(this);
 
         setupToolbar();
 
         prepareListData();
         listAdapter = new FAQExpandableAdapter(this, listDataHeader, listDataChild);
+
+
+        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+
+
+        recyclerView.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        List<String> input = new ArrayList<>();
+        for (int i = 1; i < 6; i++) {
+            input.add("FAQ" + i);
+
+            mAdapter = new RecyclerAdapter(input);
+            recyclerView.setAdapter(mAdapter);
+        }
+
+
+
     }
+
+
  //       expListView.setAdapter(listAdapter);
 
  //       expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {

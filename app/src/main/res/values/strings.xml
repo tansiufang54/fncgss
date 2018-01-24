@@ -34,7 +34,7 @@ Free usually isn’t really free. Most of these sites offer a very basic option 
     <string name="err06">User and Token not Match</string>
 
     <string name="sign_up_word">New to CMK? <b>Sign up!</b></string>
-    <string name="sign_up_word1"><b>New to CMK?</b></string>
+    <string name="sign_up_word1"><b>New to CMK? </b></string>
     <string name="sign_up_word2"><b>Sign up!</b></string>
     <string name="issued"><b>Issued</b></string>
     <string name="expired"><b>Expired</b></string>
@@ -50,15 +50,18 @@ Free usually isn’t really free. Most of these sites offer a very basic option 
     <string name="history">History</string>
     <string name="hello">Hello</string>
     <string name="sample_name">Park Ji Sung</string>
-    <string name="sample_points"><![CDATA[15.000 points >]]></string>
+    <string name="sample_points"><![CDATA[0.000 points >]]></string>
     <string name="alert">!</string>
     <string name="faq">FAQ</string>
     <string name="change_password">Change Password</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="logout">Logout</string>
-    <string name="_15.000_points">15.000 points</string>
+    <string name="_0.000_points">0.000 points</string>
     <string name="greater_than_sign"><![CDATA[>]]></string>
     <string name="forward">forward</string>
     <string name="old_password">Old Password</string>
+    <string name="definition">Definition</string>
+    <string name="example_application">Example application</string>
+    <string name="description_default">Description</string>
 
 </resources>

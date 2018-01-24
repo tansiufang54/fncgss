@@ -1,64 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-
+    android:layout_height="wrap_content"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp">
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp">
 
         <co.id.franknco.controller.MyTextView
             android:id="@+id/lvhis_item_title"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="left|center"
-            android:paddingBottom="4dp"
-            android:paddingTop="4dp"
             android:text="Product Name"
-            android:textSize="@dimen/text_size"
+            android:textSize="14sp"
             android:textColor="@color/colorAccent" />
-
-        <co.id.franknco.controller.MyTextView
-            android:id="@+id/lvhis_item_date"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="left|center"
-            android:paddingBottom="8dp"
-            android:paddingTop="4dp"
-            android:text="xx / Xxx / xx"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/text_size" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:gravity="right|center"
-        >
         <co.id.franknco.controller.MyTextView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+
             android:text="Rp. "
-            android:textSize="@dimen/text_size"
-            android:textColor="@color/colorAccent"
-            android:gravity="center"/>
+            android:gravity="end"
+            android:textSize="14sp"
+            android:textColor="@color/colorAccent" />
         <co.id.franknco.controller.MyTextView
             android:id="@+id/lvhis_item_amount"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="end"
             android:text="449.000"
-            android:textSize="@dimen/text_size"
-            android:textColor="@color/colorAccent"
-            android:gravity="center"/>
+            android:textSize="14sp"
+            android:textColor="@color/colorAccent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp">
+        <co.id.franknco.controller.MyTextView
+            android:id="@+id/lvhis_item_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="xx / Xxx / xx"
+            android:textColor="@color/warmgray"
+            android:textSize="12sp" />
     </LinearLayout>
 
 </LinearLayout>

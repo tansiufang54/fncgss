@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,36 +32,25 @@ public class FAQActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private List<String> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_faq);
-
-
         ButterKnife.bind(this);
-
-        setupToolbar();
-
-        prepareListData();
+        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
         listAdapter = new FAQExpandableAdapter(this, listDataHeader, listDataChild);
 
+        setupToolbar();
+        prepareListData();
 
-        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
-
-        recyclerView.setHasFixedSize(true);
-
-        layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        List<String> input = new ArrayList<>();
-        for (int i = 1; i < 6; i++) {
-            input.add("FAQ" + i);
-
-            mAdapter = new RecyclerAdapter(input);
-            recyclerView.setAdapter(mAdapter);
-        }
-
+        mAdapter = new RecyclerAdapter(listDataHeader, listDataChild);
+        recyclerView.setAdapter(mAdapter);
 
 
     }
@@ -128,6 +120,12 @@ public class FAQActivity extends AppCompatActivity {
 
         // Adding child data
         List<String> top250 = new ArrayList<String>();
+        String faqValue = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet felis " +
+                "eu justo elementum laoreet tempus sed ex. Fusce in tellus non urna ultrices vulputate " +
+                "nec nec massa. Nulla vitae ex ante. Sed id ullamcorper eros. Pellentesque lobortis aliquam " +
+                "metus ut feugiat. Curabitur ornare nibh ac rhoncus ultricies. Ut luctus pretium nulla. " +
+                "Cras justo arcu, malesuada non mattis eget, blandit in neque.";
+
         top250.add("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet felis " +
                 "eu justo elementum laoreet tempus sed ex. Fusce in tellus non urna ultrices vulputate " +
                 "nec nec massa. Nulla vitae ex ante. Sed id ullamcorper eros. Pellentesque lobortis aliquam " +
@@ -151,6 +149,7 @@ public class FAQActivity extends AppCompatActivity {
         listDataChild.put(listDataHeader.get(0), top250); // Header, Child data
         listDataChild.put(listDataHeader.get(1), nowShowing);
         listDataChild.put(listDataHeader.get(2), comingSoon);
+
     }
 
 }

@@ -1,6 +1,7 @@
 package co.id.franknco.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,7 +70,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.buttonDrop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                holder.txtFooter.setVisibility(holder.txtFooter.getVisibility() == View.GONE ? View.VISIBLE : View.GONE);
+                if (view.isSelected()) {
+                    view.setSelected(false);
+                    holder.txtFooter.setVisibility(View.GONE);
+                }else {
+                    view.setSelected(true);
+                    holder.txtFooter.setVisibility(View.VISIBLE);
+                }
             }
         });
         holder.txtHeader.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +85,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 remove(position);
             }
         });
-
 
         holder.txtFooter.setText("" + def);
 

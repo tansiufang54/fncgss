@@ -93,8 +93,6 @@ public class NearbyActivityMap extends AppCompatActivity implements OnMapReadyCa
     ImageView _imgLogo;
     @BindView(R.id.listNearby)
     ListView _listCollege;
-    @BindView(R.id.ll_card_list)
-    SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.sd_collapsing_toolbar)
     CollapsingToolbarLayout collapsingToolbarLayout;
     @BindView(R.id.sd_appbar_layout)
@@ -177,8 +175,6 @@ public class NearbyActivityMap extends AppCompatActivity implements OnMapReadyCa
 
         }*/
 
-        setClickEvents();
-
     }
 
     @Override
@@ -213,15 +209,12 @@ public class NearbyActivityMap extends AppCompatActivity implements OnMapReadyCa
     @Override
     public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
         if (collapsingToolbarLayout.getHeight() + verticalOffset < 2 * ViewCompat.getMinimumHeight(collapsingToolbarLayout)) {
-            swipeRefreshLayout.setEnabled(false);
             DisplayMetrics displaymetrics = new DisplayMetrics();
             getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
             int height = displaymetrics.heightPixels;
             ViewGroup.LayoutParams params = mapFragment.getView().getLayoutParams();
-            params.height = height;
+            params.height = (int) (height / 2.30);
             mapFragment.getView().setLayoutParams(params);
-        } else {
-            swipeRefreshLayout.setEnabled(true);
         }
     }
 
@@ -230,6 +223,7 @@ public class NearbyActivityMap extends AppCompatActivity implements OnMapReadyCa
     public void onMapReady(GoogleMap googleMap) {
         if (googleMap == null)return;
         this.googleMap = googleMap;
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(-6.214620, 106.845130), 10));
     }
 
     /**
@@ -407,14 +401,14 @@ public class NearbyActivityMap extends AppCompatActivity implements OnMapReadyCa
     }
 */
 
-   private void setClickEvents() {
-       swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-           @Override
-           public void onRefresh() {
-               swipeRefreshLayout.setRefreshing(false);
-           }
-       });
-   }
+//   private void setClickEvents() {
+//       swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//           @Override
+//           public void onRefresh() {
+//               swipeRefreshLayout.setRefreshing(false);
+//           }
+//       });
+//   }
 
     private void setupToolbar(String outlet) {
         setSupportActionBar(toolbar);
@@ -514,7 +508,7 @@ public class NearbyActivityMap extends AppCompatActivity implements OnMapReadyCa
                                    if (bounds != null) {
                                        int width = getResources().getDisplayMetrics().widthPixels;
                                        int height = getResources().getDisplayMetrics().heightPixels;
-                                       int padding = (int) (width * 0.27);
+                                       int padding = (int) (width * 0.48);
                                        googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, width, height, padding));
                                    }
                                 }
@@ -597,8 +591,20 @@ public class NearbyActivityMap extends AppCompatActivity implements OnMapReadyCa
             @Override
             public void onErrorResponse(VolleyError error) {
                 if (error != null) { //NULL DATA GIVEN
+                    String errMsg;
+                    if (error.networkResponse != null && error.networkResponse.data != null) {
+                         errMsg = new String(error.networkResponse.data);
+                    } else {
+                        errMsg = error.getMessage();
+                    }
+
+                    Log.i(TAG, "onErrorResponse: Parse error msg: " + errMsg);
+                    Log.i(TAG, "onErrorResponse: Parse error msg: " + error);
+
                     Toast.makeText(NearbyActivityMap.this,
                             "Connection Problem!", Toast.LENGTH_LONG).show();
+                    _proCollageList.setVisibility(GONE);
+
                 } else { //DATA GIVEN
                    /* Toast.makeText(getApplicationContext(),
                             error.getMessage(), Toast.LENGTH_LONG).show();*/

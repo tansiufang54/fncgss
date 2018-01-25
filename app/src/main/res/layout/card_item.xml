@@ -22,7 +22,6 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:adjustViewBounds="true"
-            android:background="@drawable/card_bg"
             android:foregroundGravity="center"
             android:padding="10dp"
             android:scaleType="centerCrop" />
@@ -35,7 +34,6 @@
             android:layout_marginBottom="24dp"
             android:layout_marginEnd="45dp"
             android:gravity="center|end"
-            android:text="1234 5678 9101 2200"
             android:textColor="@color/warmgray"
             android:textSize="@dimen/text_size_button"
             android:textStyle="bold" />

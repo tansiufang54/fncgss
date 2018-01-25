@@ -91,15 +91,18 @@ public class MyCustomPagerAdapter2 extends PagerAdapter {
 
         Log.i("MyCustomPagerAdapter2", "instantiateItem: Display color card: " + position);
 
+
         try {
-            GradientDrawable drawable = (GradientDrawable) cardImages.getBackground();
-            //cardImages.setImageBitmap((interfaceHelper.decodeBase64(jobj.getString("front_view"))));
-            if(position%3 == 0){
-                drawable.setColor(ContextCompat.getColor(activity, R.color.black_2));
-            }
-            if(position%3 == 1){
-                drawable.setColor(ContextCompat.getColor(activity, R.color.gold));
-            }
+//            GradientDrawable drawable = (GradientDrawable) cardImages.getBackground();
+//            if(position%3 == 0){
+//                drawable.setColor(ContextCompat.getColor(activity, R.color.black_2));
+//            }
+//            if(position%3 == 1){
+//                drawable.setColor(ContextCompat.getColor(activity, R.color.gold));
+//            }
+
+            cardImages.setImageBitmap((interfaceHelper.decodeBase64(jobj.getString("front_view"))));
+
             //cardImages.getBackground().setColorFilter(ContextCompat.getColor(activity, R.color.gold), PorterDuff.Mode.SRC_IN);
 
             cardNum = temp3DES.decrypt(jobj.getString("card_number"));

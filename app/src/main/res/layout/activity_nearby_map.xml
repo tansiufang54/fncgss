@@ -8,7 +8,7 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/sd_appbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="276dp"
+        android:layout_height="match_parent"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/sd_collapsing_toolbar"
@@ -23,41 +23,21 @@
                 android:id="@+id/map"
                 android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_collapseMode="parallax"
-                android:layout_marginTop="?attr/actionBarSize"/>
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:layout_collapseMode="pin"
-                android:gravity="center">
-                <ImageView
-                    android:id="@+id/logo"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:src="@drawable/fnc"
-                    android:visibility="visible"
-                    android:paddingStart="0dp"
-                    android:paddingEnd="60dp" />
-            </android.support.v7.widget.Toolbar>
+                android:layout_height="match_parent" />
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
     <LinearLayout
         android:id="@+id/ll_card_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="-20dp"
         android:background="@drawable/border_shadow_top"
         android:orientation="vertical"
+        android:layout_marginTop="-155dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
         <ListView
             android:id="@+id/listNearby"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:cacheColorHint="@color/colorAccent"
             android:divider="@null"
             android:nestedScrollingEnabled="true"
@@ -69,5 +49,5 @@
         android:layout_height="wrap_content"
         android:visibility="visible"
         android:layout_gravity="center"
-        android:layout_marginTop="200dp"/>
+        android:layout_marginTop="400dp"/>
 </android.support.design.widget.CoordinatorLayout>

@@ -133,7 +133,7 @@ public class NearbyActivityMap extends AppCompatActivity implements OnMapReadyCa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nearby_map);
+        setContentView(R.layout.layout_nearby_map);
         ButterKnife.bind(this);
         points = new ArrayList<LatLng>();
 
@@ -175,6 +175,7 @@ public class NearbyActivityMap extends AppCompatActivity implements OnMapReadyCa
 
         }*/
 
+      setClickEvents();
     }
 
     @Override
@@ -213,7 +214,7 @@ public class NearbyActivityMap extends AppCompatActivity implements OnMapReadyCa
             getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
             int height = displaymetrics.heightPixels;
             ViewGroup.LayoutParams params = mapFragment.getView().getLayoutParams();
-            params.height = (int) (height / 2.30);
+            params.height = height;
             mapFragment.getView().setLayoutParams(params);
         }
     }
@@ -409,6 +410,21 @@ public class NearbyActivityMap extends AppCompatActivity implements OnMapReadyCa
 //           }
 //       });
 //   }
+
+
+    private void setClickEvents() {
+        if (appBarLayout.getLayoutParams() != null) {
+            CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) appBarLayout.getLayoutParams();
+            AppBarLayout.Behavior appBarLayoutBehaviour = new AppBarLayout.Behavior();
+            appBarLayoutBehaviour.setDragCallback(new AppBarLayout.Behavior.DragCallback() {
+                @Override
+                public boolean canDrag(@NonNull AppBarLayout appBarLayout) {
+                    return false;
+                }
+            });
+            layoutParams.setBehavior(appBarLayoutBehaviour);
+        }
+    }
 
     private void setupToolbar(String outlet) {
         setSupportActionBar(toolbar);

@@ -94,6 +94,7 @@ public class BottomNav1 extends Fragment implements SwipeRefreshLayout.OnRefresh
     SessionManager sessionManager;
     Temp3DES temp3DES;
     private InterfaceHelper interfaceHelper;
+    private MyCustomPagerAdapter2 adapter2;
 
     @Override
     public void onDestroy() {
@@ -127,15 +128,6 @@ public class BottomNav1 extends Fragment implements SwipeRefreshLayout.OnRefresh
 
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_category1, container, false);
-        dialog = ProgressDialog.show(getActivity(), "", "Please wait...",
-                true);
-        dialog.show();
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                dialog.dismiss() ;
-            }
-        }, 5000);
         swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setProgressBackgroundColorSchemeColor(getResources().getColor(R.color.colorAccent));
         swipeRefreshLayout.setOnRefreshListener(this);
@@ -205,6 +197,10 @@ public class BottomNav1 extends Fragment implements SwipeRefreshLayout.OnRefresh
 
     private void getCardListUser() {
 
+        dialog = ProgressDialog.show(getActivity(), "", "Please wait...",
+                true);
+        dialog.show();
+
         swipeRefreshLayout.setRefreshing(true);
         String tag_string_req = "req_getcardlistuser";
         Map<String, String> postParam = new HashMap<String, String>();
@@ -217,14 +213,14 @@ public class BottomNav1 extends Fragment implements SwipeRefreshLayout.OnRefresh
 
                     @Override
                     public void onResponse(JSONObject response) {
+                        dialog.cancel();
                         try {
                             String code = response.getString("code");
                             String data = response.getString("msg");
                             if (code.equals("0710")) {
                              try {
                                  cardDataArray = new JSONArray(data);
-                                 MyCustomPagerAdapter2 adapter2 = new MyCustomPagerAdapter2(getActivity(), cardDataArray);
-                                 viewPager.setAdapter(adapter2);
+                                 setViewPagerAdapter(cardDataArray);
                                  if(cardDataArray.length() == 0){
                                      emptyCardLayout.setVisibility(View.VISIBLE);
                                      appBarLayout.setVisibility(View.GONE);
@@ -242,6 +238,7 @@ public class BottomNav1 extends Fragment implements SwipeRefreshLayout.OnRefresh
                              }catch (NullPointerException e){
 
                              }
+
                             } else if (code.equals("0720")) {
                                 AlertDialog.Builder hasiljalur;
                                 AlertDialog dialogjalur;
@@ -315,6 +312,7 @@ public class BottomNav1 extends Fragment implements SwipeRefreshLayout.OnRefresh
             @Override
             public void onErrorResponse(VolleyError error) {
                 if (error != null) { //NULL DATA GIVEN
+                    dialog.cancel();
                     swipeRefreshLayout.setRefreshing(false);
                     Toast.makeText(getContext(),
                             "Connection Problem!", Toast.LENGTH_LONG).show();
@@ -343,6 +341,13 @@ public class BottomNav1 extends Fragment implements SwipeRefreshLayout.OnRefresh
         AppController.getInstance().addToRequestQueue(jsonObjReq, tag_string_req);
     }
 
+
+    private void setViewPagerAdapter(JSONArray array) {
+        if(adapter2 == null){
+            adapter2 = new MyCustomPagerAdapter2(getActivity(), array);
+            viewPager.setAdapter(adapter2);
+        }else adapter2.notifyDataSetChanged();
+    }
     private ViewPager.OnPageChangeListener replaceData() {
         return new ViewPager.OnPageChangeListener() {
             @Override

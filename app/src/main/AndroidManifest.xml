@@ -66,7 +66,28 @@
                   <category android:name="android.intent.category.LAUNCHER" />
               </intent-filter>-->
         </activity>
-
+        <activity
+            android:name=".ui.settings.MyPointsActivity"
+            android:label="My Points"
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:hardwareAccelerated="false">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.settings.SettingsActivity" />
+        </activity>
+        <activity
+            android:name=".ui.inbox.InboxActivity"
+            android:label="Inbox"
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:hardwareAccelerated="false">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.settings.SettingsActivity" />
+        </activity>
         <activity
             android:name=".ui.addcard.AddCardActivity"
             android:label="Add Card"
@@ -211,16 +232,19 @@
 
         </activity>
 
+
         <activity
             android:name=".ui.editprofile.EditProfileActivity"
-            android:label="Privacy Policy"
+            android:label="Edit Profile"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
-            android:parentActivityName=".ui.editprofile.EditProfileActivity"
+            android:parentActivityName=".ui.settings.SettingsActivity"
             android:theme="@style/AppTheme">
 
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.settings.SettingsActivity" />
         </activity>
-
     </application>
 
 </manifest>

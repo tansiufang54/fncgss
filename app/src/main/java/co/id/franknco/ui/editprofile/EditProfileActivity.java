@@ -15,16 +15,27 @@ import co.id.franknco.R;
 
 
 public class EditProfileActivity extends AppCompatActivity {
-    private static final String TAG = "EditProfileActivity";
+    private static final String TAG = EditProfileActivity.class.getSimpleName();
 
-
-    public EditProfileActivity() {
-        // Required empty public constructor
-    }
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editprofile);
+        ButterKnife.bind(this);
+        setupToolbar();
+    }
+
+    private void setupToolbar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        if (getSupportActionBar() == null) {
+            throw new IllegalStateException("Activity must implement toolbar");
+        }
     }
 }

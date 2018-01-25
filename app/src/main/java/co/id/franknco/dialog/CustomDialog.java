@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -19,8 +20,8 @@ import co.id.franknco.R;
 
 public class CustomDialog extends Dialog implements View.OnClickListener {
     private Activity activity;
-    private Button btnPositive, btnNegative;
-    private String lbl_btnPositive = "Ok", lbl_btnNegative = "Cancel";
+    private TextView btnPositive, btnNegative;
+    private String lbl_btnPositive = "OK", lbl_btnNegative = "Cancel";
     private String lbl_dialogTitle, lbl_dialogMsg, lbl_color = "";
     private TextView dialogTitle, dialogMsg;
 
@@ -55,17 +56,17 @@ public class CustomDialog extends Dialog implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.custom_dialog);
-        btnPositive = (Button) findViewById(R.id.cd_btn_positive);
-        btnNegative = (Button) findViewById(R.id.cd_btn_negative);
+        btnPositive = (TextView) findViewById(R.id.cd_btn_positive);
+        btnNegative = (TextView) findViewById(R.id.cd_btn_negative);
         dialogMsg = (TextView) findViewById(R.id.cd_message);
         //to change dialog window size
         getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         dialogTitle = (TextView) findViewById(R.id.cd_title);
         dialogTitle.setText(lbl_dialogTitle);
         if (lbl_color.contains("red")) {
-            dialogTitle.setTextColor(Color.RED);
+            dialogTitle.setTextColor(ContextCompat.getColor(activity, R.color.red_2));
         } else if (lbl_color.contains("green")) {
-            dialogTitle.setTextColor(Color.GREEN);
+            dialogTitle.setTextColor(ContextCompat.getColor(activity, R.color.green));
         }else{
             dialogTitle.setTextColor(Color.DKGRAY);
         }

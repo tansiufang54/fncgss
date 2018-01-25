@@ -23,7 +23,9 @@ import co.id.franknco.ui.changepass.ChangePasswordActivity;
 import co.id.franknco.ui.editprofile.EditProfileActivity;
 import co.id.franknco.ui.faq.FAQActivity;
 import co.id.franknco.ui.history.HistoryActivity;
+import co.id.franknco.ui.inbox.InboxActivity;
 import co.id.franknco.ui.login.LoginActivity;
+import co.id.franknco.ui.main.MainActivity;
 import co.id.franknco.ui.policyprivacy.PrivacyPolicyActivity;
 import co.id.franknco.ui.termsandconditions.TermsandConditionActivity;
 
@@ -47,8 +49,9 @@ public class SettingsActivity extends Fragment {
         function = new ConfigurasiAPI(getActivity());
         session = new SessionManager(getActivity());
         String name = session.getUser();
-        String upperString = name.substring(0,1).toUpperCase() + name.substring(1);
+        String upperString = String.valueOf("Hello " + name.substring(0,1).toUpperCase() + name.substring(1) + "!");
         _txtName.setText(upperString);
+        ((MainActivity)getActivity()).getSupportActionBar().hide();
         //setupToolbar();
         return rootView;
     }
@@ -65,9 +68,19 @@ public class SettingsActivity extends Fragment {
     }*/
 
 
+    @OnClick(R.id.btn_settings_points)
+    public void toMyPoints() {
+        startActivity(new Intent(getActivity(), MyPointsActivity.class));
+    }
+
     @OnClick(R.id.txt_settings_editprofile)
     public void toEditProfile(View v){
         startActivity(new Intent(getActivity(), EditProfileActivity.class));
+    }
+
+    @OnClick(R.id.txt_settings_inbox)
+    public void toInbox() {
+        startActivity(new Intent(getActivity(), InboxActivity.class));
     }
 
     @OnClick(R.id.txt_change_pass)

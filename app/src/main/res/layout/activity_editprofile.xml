@@ -5,27 +5,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:fitsSystemWindows="true">
-
-    <android.support.design.widget.AppBarLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            />
-
-    </android.support.design.widget.AppBarLayout>
-
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingTop="56dp">
+        android:layout_marginTop="?attr/actionBarSize">
 
         <!-- NEXT PAGE -->
         <LinearLayout
@@ -36,6 +26,7 @@
             android:paddingRight="32dp"
             android:orientation="vertical"
             android:visibility="visible">
+
             <!--  JUDUL Label -->
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -54,10 +45,10 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="65dp"
+                android:layout_marginTop="55dp"
                 android:textColorHint="@color/colorAccent">
 
-                <EditText
+                <co.id.franknco.controller.MyEditText
                     android:id="@+id/input_firstname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -70,10 +61,10 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="10dp"
                 android:textColorHint="@color/colorAccent">
 
-                <EditText
+                <co.id.franknco.controller.MyEditText
                     android:id="@+id/input_lastname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -87,10 +78,10 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="10dp"
                 android:textColorHint="@color/colorAccent">
 
-                <EditText
+                <co.id.franknco.controller.MyEditText
                     android:id="@+id/input_dateofbirth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -105,10 +96,10 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="10dp"
                 android:textColorHint="@color/colorAccent">
 
-                <EditText
+                <co.id.franknco.controller.MyEditText
                     android:id="@+id/input_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -122,10 +113,10 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="10dp"
                 android:textColorHint="@color/colorAccent">
 
-                <EditText
+                <co.id.franknco.controller.MyEditText
                     android:id="@+id/input_mobile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -184,13 +175,12 @@
                 android:id="@+id/btn_save_editprofile"
                 android:layout_width="104dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="25dp"
                 android:layout_gravity="end"
                 android:background="@drawable/button_selector"
                 android:text="@string/save"
                 android:textAllCaps="false"
                 android:textColor="@color/white" />
-
         </LinearLayout>
 
     </ScrollView>

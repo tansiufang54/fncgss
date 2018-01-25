@@ -233,6 +233,9 @@ public class ConfigurasiAPI {
 
                     @Override
                     public void onResponse(JSONObject response) {
+
+                        Log.i("ConfigurasiAPI", "onErrorResponse: Login response in web service: " + response);
+
                         try {
                             String code = response.getString("code");
                             String data = response.getString("msg");
@@ -301,6 +304,16 @@ public class ConfigurasiAPI {
                    /* Toast.makeText(getApplicationContext(),
                             error.getMessage(), Toast.LENGTH_LONG).show();*/
                 }
+
+
+                String errMsg;
+                if (error.networkResponse != null && error.networkResponse.data != null) {
+                    errMsg = new String(error.networkResponse.data);
+                } else {
+                    errMsg = error.getMessage();
+                }
+
+                Log.i("ConfigurasiAPI", "onErrorResponse: Login response in web service 12345: " + errMsg);
             }
         }) {
 

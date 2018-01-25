@@ -80,6 +80,10 @@ public class MainActivity extends AppCompatActivity/* implements NavigationView.
         }
     }
 
+    public Toolbar getToolbar() {
+        return toolbar;
+    }
+
     private void initUI() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);

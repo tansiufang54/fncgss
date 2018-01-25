@@ -5,120 +5,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-
     android:paddingEnd="@dimen/padding_end_layout"
     android:paddingStart="@dimen/padding_start_layout">
-
-    <!--<android.support.design.widget.AppBarLayout
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-         <android.support.v7.widget.Toolbar
-             android:id="@+id/toolbar"
-             android:layout_width="match_parent"
-             android:layout_height="?attr/actionBarSize"
-             android:background="?attr/colorPrimary"
-             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-             app:titleTextColor="@color/colorPrimaryDark"
-             app:subtitleTextColor="@color/colorPrimaryDark" />
-
-     </android.support.design.widget.AppBarLayout>-->
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:ignore="UselessParent">
+        tools:ignore="UselessParent"
+        android:layout_marginTop="?attr/actionBarSize">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            android:paddingTop="20dp">
-            <!--  JUDUL Label -->
-
-            <LinearLayout
+            android:orientation="vertical"
+            android:layout_margin="10dp">
+            <co.id.franknco.controller.MyTextView2
+                android:id="@+id/txt_header_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hello Budi!"
+                android:textSize="30sp"
+                android:textColor="@color/greyish_brown" />
+            <Button
+                android:id="@+id/btn_settings_points"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginTop="15dp"
+                android:text="@string/sample_points"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:background="@drawable/login_button_bg"
+                android:gravity="center"
+                android:padding="5dp"
+                android:drawableEnd="@drawable/ic_right_arrow"
+                android:drawableTint="@color/white" />
 
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:textColorHint="@color/colorAccent">
-
-                        <co.id.franknco.controller.MyTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/hello"
-                            android:textColor="@color/colorAccent"
-                            android:textSize="@dimen/text_size_header" />
-
-                    </android.support.design.widget.TextInputLayout>
-
-                    <!--  Header Name Label -->
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:paddingStart="10dp"
-                        android:paddingEnd="10dp"
-                        android:textColorHint="@color/colorAccent">
-
-                        <co.id.franknco.controller.MyTextView
-                            android:id="@+id/txt_header_name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/sample_name"
-                            android:textColor="@color/colorAccent"
-                            android:textSize="@dimen/text_size_header" />
-
-                    </android.support.design.widget.TextInputLayout>
-
-                </LinearLayout>
-
-
-                <Button
-                    android:id="@+id/btn_settings_points"
-                    android:layout_width="126dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="@string/sample_points"
-                    android:textAllCaps="false"
-                    android:textSize="14sp"
-                    android:textColor="@color/white" />
-
-
-
-            </LinearLayout>
-
-            <!--  ! Label -->
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:textColorHint="@color/colorAccent">
-
-                <co.id.franknco.controller.MyTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/alert"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/text_size_header" />
-
-            </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
         <ScrollView
@@ -274,7 +196,7 @@
                         android:layout_weight="9.75"
                         android:padding="@dimen/activity_horizontal_margin"
                         android:text="@string/edit_profile"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/greyish_brown"
                         android:textSize="@dimen/text_size_insert" />
 
                     <ImageView
@@ -282,15 +204,15 @@
                         android:layout_height="24dp"
                         android:layout_gravity="center"
                         android:layout_weight="0.25"
-                        android:background="@drawable/right"
+                        android:background="@drawable/ic_right_arrow"
                         android:contentDescription="@string/forward"/>
 
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.1dp"
-                    android:background="#cccccc" />
+                    android:layout_height="1dp"
+                    android:background="@color/gray_accent" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -304,7 +226,7 @@
                         android:layout_weight="9.75"
                         android:padding="@dimen/activity_horizontal_margin"
                         android:text="@string/inbox"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/greyish_brown"
                         android:textSize="@dimen/text_size_insert" />
 
                     <ImageView
@@ -312,15 +234,15 @@
                         android:layout_height="24dp"
                         android:layout_gravity="center"
                         android:layout_weight="0.25"
-                        android:background="@drawable/right"
+                        android:background="@drawable/ic_right_arrow"
                         android:contentDescription="@string/forward"/>
 
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.1dp"
-                    android:background="#cccccc" />
+                    android:layout_height="1dp"
+                    android:background="@color/gray_accent" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -334,7 +256,7 @@
                         android:layout_weight="9.75"
                         android:padding="@dimen/activity_horizontal_margin"
                         android:text="@string/faq"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/greyish_brown"
                         android:textSize="@dimen/text_size_insert" />
 
                     <ImageView
@@ -342,15 +264,15 @@
                         android:layout_height="24dp"
                         android:layout_gravity="center"
                         android:layout_weight="0.25"
-                        android:background="@drawable/right"
+                        android:background="@drawable/ic_right_arrow"
                         android:contentDescription="@string/forward"/>
 
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.1dp"
-                    android:background="#cccccc" />
+                    android:layout_height="1dp"
+                    android:background="@color/gray_accent" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -365,7 +287,7 @@
                         android:layout_weight="9.75"
                         android:padding="@dimen/activity_horizontal_margin"
                         android:text="@string/privacy_policy"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/greyish_brown"
                         android:textSize="@dimen/text_size_insert" />
 
                     <ImageView
@@ -374,15 +296,15 @@
                         android:layout_height="24dp"
                         android:layout_gravity="center"
                         android:layout_weight="0.25"
-                        android:background="@drawable/right"
+                        android:background="@drawable/ic_right_arrow"
                         android:contentDescription="@string/forward"/>
 
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.1dp"
-                    android:background="#cccccc" />
+                    android:layout_height="1dp"
+                    android:background="@color/gray_accent" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -396,7 +318,7 @@
                         android:layout_weight="9.75"
                         android:padding="@dimen/activity_horizontal_margin"
                         android:text="@string/change_password"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/greyish_brown"
                         android:textSize="@dimen/text_size_insert" />
 
                     <ImageView
@@ -405,15 +327,15 @@
                         android:layout_height="24dp"
                         android:layout_gravity="center"
                         android:layout_weight="0.25"
-                        android:background="@drawable/right"
+                        android:background="@drawable/ic_right_arrow"
                         android:contentDescription="@string/forward"/>
 
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.1dp"
-                    android:background="#cccccc" />
+                    android:layout_height="1dp"
+                    android:background="@color/gray_accent" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -427,7 +349,7 @@
                         android:layout_weight="9.75"
                         android:padding="@dimen/activity_horizontal_margin"
                         android:text="@string/logout"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/greyish_brown"
                         android:textSize="@dimen/text_size_insert" />
                     <!-- <TextView
                    android:id="@+id/txt_terms_and_condition"
@@ -455,15 +377,15 @@
                         android:layout_height="24dp"
                         android:layout_gravity="center"
                         android:layout_weight="0.25"
-                        android:background="@drawable/right"
+                        android:background="@drawable/ic_right_arrow"
                         android:contentDescription="@string/forward"/>
 
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.1dp"
-                    android:background="#cccccc" />
+                    android:layout_height="1dp"
+                    android:background="@color/gray_accent" />
 
             </LinearLayout>
 

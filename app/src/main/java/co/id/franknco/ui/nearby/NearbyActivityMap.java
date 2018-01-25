@@ -524,7 +524,7 @@ public class NearbyActivityMap extends AppCompatActivity implements OnMapReadyCa
                                    if (bounds != null) {
                                        int width = getResources().getDisplayMetrics().widthPixels;
                                        int height = getResources().getDisplayMetrics().heightPixels;
-                                       int padding = (int) (width * 0.48);
+                                       int padding = (int) (width * 0.30);
                                        googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, width, height, padding));
                                    }
                                 }

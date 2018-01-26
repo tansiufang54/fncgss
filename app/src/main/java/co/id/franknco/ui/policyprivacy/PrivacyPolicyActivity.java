@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.id.franknco.R;
+import co.id.franknco.controller.ConfigurasiAPI;
+import co.id.franknco.interfaces.Callbackjson;
 import co.id.franknco.ui.faq.FAQExpandableAdapter;
 import co.id.franknco.ui.main.MainActivity;
 import co.id.franknco.ui.settings.SettingsActivity;
@@ -27,11 +30,16 @@ import co.id.franknco.ui.settings.SettingsActivity;
  */
 
 public class PrivacyPolicyActivity extends AppCompatActivity {
+
+    public static final String TAG = PrivacyPolicyActivity.class.getSimpleName();
+
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.input_policy_privacy)
     TextView _txtPrivacyPolicy;
    /* @BindView(R.id.btn_privacy_policy)
     Button _btnPrivacyPolicy;*/
+
+    private ConfigurasiAPI function;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +74,14 @@ public class PrivacyPolicyActivity extends AppCompatActivity {
     }
 
     private void prepareData() {
-        _txtPrivacyPolicy.setText(R.string.privacypolicy);
+        function = new ConfigurasiAPI(this);
+        function.PrivacyPolicy(new Callbackjson() {
+            @Override
+            public void onSuccess(String result) {
+                Log.i(TAG, "onSuccess: Display privacy: " + result);
+                _txtPrivacyPolicy.setText(result);
+            }
+        });
     }
 
     @Override

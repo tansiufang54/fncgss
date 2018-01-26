@@ -53,7 +53,7 @@ public class SplashActivity extends AppCompatActivity {
     private static long SLEEP_TIME = 3;    // Sleep for some time
     private Temp3DES temp3DES;
     private SessionManager sessionManager;
-    private String username, token;
+    private String username, token, umid;
     String red = "red";
 
 
@@ -105,6 +105,8 @@ public class SplashActivity extends AppCompatActivity {
                     username = sessionManager.getUsername();
 
                     token = sessionManager.getTokenId();
+
+                    umid = sessionManager.getumId();
 
                 } catch (NullPointerException e) {
 
@@ -160,7 +162,7 @@ public class SplashActivity extends AppCompatActivity {
                                 myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 finish();
                                 startActivity(myintent);
-                                sessionManager.createLoginSession(hp, fullname, token);
+                                sessionManager.createLoginSession(hp, fullname, token, umid);
 
                                 return;
                             } else {

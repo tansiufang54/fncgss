@@ -51,7 +51,8 @@ import retrofit2.Response;
 
 public class SignupActivity extends AppCompatActivity {
     private static final String TAG = "SignupActivity";
-    @BindView(R.id.toolbar)Toolbar toolbar;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     @BindView(R.id.sv_layer1)
     ScrollView _LLnextsignup;
     @BindView(R.id.sv_layer2)
@@ -72,14 +73,16 @@ public class SignupActivity extends AppCompatActivity {
     EditText _pText;
     @BindView(R.id.input_reEnterPassword)
     EditText _reEnterPText;
+    @BindView(R.id.signUp)
+    LinearLayout _txtSignUp;
     @BindView(R.id.btn_next_signup)
     ImageButton _signupnextButton;
     @BindView(R.id.btn_signup)
     CardView _signupButton;
     @BindView(R.id.checkbox_termsandconditions)
     CheckBox _checkboxTnC;
-   /* @BindView(R.id.link_login)
-    TextView _loginLink;*/
+    /* @BindView(R.id.link_login)
+     TextView _loginLink;*/
     ConfigurasiAPI function;
     String currentDateTimeString;
     String cardnumber;
@@ -92,6 +95,7 @@ public class SignupActivity extends AppCompatActivity {
     String reEnterP;
     String code_page = "0";
     Calendar myCalendar = Calendar.getInstance();
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -136,6 +140,7 @@ public class SignupActivity extends AppCompatActivity {
             public void onClick(View v) {
                 code_page = "1";
                 try {
+
                     signup();
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
@@ -170,7 +175,6 @@ public class SignupActivity extends AppCompatActivity {
     private void updateLabel() {
         String myFormat = "ddMMyyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-
         _etDateOfBirth.setText(sdf.format(myCalendar.getTime()));
     }
 
@@ -208,6 +212,7 @@ public class SignupActivity extends AppCompatActivity {
             }
             code_page = "2";
             _LLnextsignup.setVisibility(View.GONE);
+            _txtSignUp.setVisibility(View.GONE);
             _LLsignup.setVisibility(View.VISIBLE);
         }
 
@@ -237,7 +242,7 @@ public class SignupActivity extends AppCompatActivity {
         mobile = _mobileText.getText().toString().trim();
 
 
-        if (cardnumber.isEmpty() || !(cardnumber.length() >= 15 )) {
+        if (cardnumber.isEmpty() || !(cardnumber.length() >= 15)) {
             _etNoCard.setError("please insert valid cardnumber");
             valid = false;
         } else {
@@ -265,7 +270,7 @@ public class SignupActivity extends AppCompatActivity {
             _etDateOfBirth.setError(null);
         }
 
-        if (mobile.isEmpty() || !(mobile.length() <= 12)|| !(mobile.length() >= 9)) {
+        if (mobile.isEmpty() || !(mobile.length() <= 12) || !(mobile.length() >= 9)) {
             _mobileText.setError("Enter Valid Mobile Number");
             valid = false;
         } else {
@@ -314,9 +319,10 @@ public class SignupActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (code_page.contains("1") || code_page.contains("2")) {
             _LLnextsignup.setVisibility(View.VISIBLE);
+            _txtSignUp.setVisibility(View.VISIBLE);
             _LLsignup.setVisibility(View.GONE);
             code_page = "0";
-        }else {
+        } else {
             Intent myintent = new Intent(getApplicationContext(), LoginActivity.class);
             myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             finish();
@@ -337,5 +343,4 @@ public class SignupActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

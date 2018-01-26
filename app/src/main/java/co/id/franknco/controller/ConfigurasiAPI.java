@@ -43,10 +43,13 @@ import co.id.franknco.adapter.ListViewHistoryAdapter;
 import co.id.franknco.crypto.Temp3DES;
 import co.id.franknco.crypto.TripleDES;
 import co.id.franknco.dialog.CustomDialog;
+import co.id.franknco.interfaces.FaqListener;
+import co.id.franknco.model.Faq;
 import co.id.franknco.ui.history.HistoryActivity;
 import co.id.franknco.ui.login.LoginActivity;
 import co.id.franknco.ui.main.MainActivity;
 import co.id.franknco.ui.settings.SettingsActivity;
+import co.id.franknco.interfaces.Callbackjson;
 
 /**
  * Created by GSS-NB-2016-0012 on 9/27/2017.
@@ -234,8 +237,6 @@ public class ConfigurasiAPI {
                     @Override
                     public void onResponse(JSONObject response) {
 
-                        Log.i("ConfigurasiAPI", "onErrorResponse: Login response in web service: " + response);
-
                         try {
                             String code = response.getString("code");
                             String data = response.getString("msg");
@@ -244,14 +245,14 @@ public class ConfigurasiAPI {
                                 JSONObject msg = response.getJSONObject("msg");
                                 String token = msg.getString("token");
                                 String fullname = msg.getString("fullname");
+                                String umid = msg.getString("umid");
                                 Intent myintent = new Intent(activity, MainActivity.class);
                                 myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 activity.finish();
                                 activity.startActivity(myintent);
-                                sessionManager.createLoginSession(temp3DES.encrypt(hp), temp3DES.decrypt(fullname), token);
-
-
+                                sessionManager.createLoginSession(temp3DES.encrypt(hp), temp3DES.decrypt(fullname), token, umid);
                             } else if (code.equals("0120")) {
+
                                 CustomDialog myCD = new CustomDialog(activity, "Failed!", data,red) {
                                     @Override
                                     public void btnPositiveClicked() {
@@ -676,6 +677,104 @@ public class ConfigurasiAPI {
         AppController.getInstance().addToRequestQueue(jsonObjReq, tag_string_req);
     }
 
+    /**
+     * EDIT PROFILE
+     */
+    public void EditProfile(final String name, final String dob, final String address, final String phonenumber) {
+        String tag_string_req = "req_edit_profile";
+
+        SimpleDateFormat format = new SimpleDateFormat("ddMMyyyy");
+        Date newDate = null;
+        try {
+            newDate = format.parse(dob);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        format = new SimpleDateFormat("yyyy-MM-dd");
+        String date = format.format(newDate);
+        String dataMSG = "";
+        dataMSG = sessionManager.getUsername()+ "#" + sessionManager.getumId() +"#"+ temp3DES.encrypt(name) + "#" + temp3DES.encrypt(date) + "#" + temp3DES.encrypt(address) + "#" + temp3DES.encrypt(phonenumber);
+
+        Map<String, String> postParam = new HashMap<String, String>();
+        postParam.put("code", "2600");
+        postParam.put("msg", dataMSG);
+        postParam.put("token", sessionManager.getTokenId());
+
+
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
+                GetUrlName.URL, new JSONObject(postParam),
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            String code = response.getString("code");
+                            String data = response.getString("msg");
+                            if (code.equals("2610")) {
+                                CustomDialog myCD = new CustomDialog(activity, "Success!", data, green) {
+                                    @Override
+                                    public void btnPositiveClicked() {
+                                        sessionManager.setUserId(temp3DES.encrypt(phonenumber));
+                                        Intent myintent = new Intent(activity, MainActivity.class);
+                                        myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        activity.finish();
+                                        activity.startActivity(myintent);
+                                    }
+                                };
+                                myCD.show();
+
+
+                            } else if ((code.equals("2620")) || (code.equals("2630")) || (code.equals("2640")) || (code.equals("2650")) || (code.equals("2660"))|| (code.equals("0006"))) {
+                                CustomDialog myCD = new CustomDialog(activity, "Failed!", data, red) {
+                                    @Override
+                                    public void btnPositiveClicked() {
+
+                                    }
+
+
+                                };
+                                myCD.show();
+
+                            }
+                        } catch (JSONException e) {
+                            // JSON error
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (error != null) { //NULL DATA GIVEN
+                    Toast.makeText(activity,
+                            "Connection Problem!", Toast.LENGTH_LONG).show();
+                } else { //DATA GIVEN
+                   /* Toast.makeText(getApplicationContext(),
+                            error.getMessage(), Toast.LENGTH_LONG).show();*/
+                }
+            }
+        }) {
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json; charset=utf-8");
+                return headers;
+            }
+
+        };
+        //for timeout and make data do not send twice
+        jsonObjReq.setRetryPolicy(new DefaultRetryPolicy(
+                GetUrlName.MY_SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(jsonObjReq, tag_string_req);
+    }
+
 
     /**
      * ADD CARD
@@ -799,5 +898,169 @@ public class ConfigurasiAPI {
         AppController.getInstance().addToRequestQueue(jsonObjReq, tag_string_req);
     }
 
+
+    /**
+     * Privacy Policy
+     */
+    public void PrivacyPolicy(final Callbackjson result) {
+
+        String tag_string_req = "req_privacy_policy";
+        Map<String, String> postParam = new HashMap<String, String>();
+        postParam.put("code", "2200");
+        postParam.put("msg", sessionManager.getUsername());
+        postParam.put("token", sessionManager.getTokenId());
+
+
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
+                GetUrlName.URL, new JSONObject(postParam),
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        try {
+                            String code = response.getString("code");
+                            String data = response.getString("msg");
+                            if (code.equals("2210")) {
+                                JSONObject msg = response.getJSONObject("msg");
+                                String privacy_text = msg.getString("privacy_text");
+                                String modified_data = msg.getString("modified_date");
+                                String modified_by = msg.getString("modified_by");
+                                // CALL BACK
+                                result.onSuccess(temp3DES.decrypt(privacy_text));
+                            } else {
+                                CustomDialog myCD = new CustomDialog(activity, "Failed!", data, red) {
+                                    @Override
+                                    public void btnPositiveClicked() {
+
+                                    }
+
+
+                                };
+                                myCD.show();
+
+                            }
+                        } catch (JSONException e) {
+                            // JSON error
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (error != null) { //NULL DATA GIVEN
+                    Toast.makeText(activity,
+                            "Connection Problem!", Toast.LENGTH_LONG);
+                } else { //DATA GIVEN
+                   /* Toast.makeText(getApplicationContext(),
+                            error.getMessage(), Toast.LENGTH_LONG).show();*/
+                }
+            }
+        }) {
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json; charset=utf-8");
+                return headers;
+            }
+
+        };
+        //for timeout and make data do not send twice
+        jsonObjReq.setRetryPolicy(new DefaultRetryPolicy(
+                GetUrlName.MY_SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(jsonObjReq, tag_string_req);
+    }
+
+    /**
+     * FAQ
+     */
+    public void Faq(final FaqListener listener) {
+
+        String tag_string_req = "req_faq";
+        Map<String, String> postParam = new HashMap<String, String>();
+        postParam.put("code", "2100");
+        postParam.put("msg", sessionManager.getUsername());
+
+
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
+                GetUrlName.URL, new JSONObject(postParam),
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+
+                        try {
+                            String code = response.getString("code");
+                            String data = response.getString("msg");
+                            if (code.equals("2110")) {
+                                ArrayList<HashMap<String, String>> arraylist;
+                                JSONArray cardlist = response.getJSONArray("msg");
+                                List<Faq> faqList = new ArrayList<>();
+                                for (int i = 0; i < cardlist.length(); i++) {
+                                    Faq faqData = new Faq(cardlist.getJSONObject(i));
+                                    faqList.add(faqData);
+                                    listener.onResult(faqList);
+                                    // CREATE ADAPTER FAQ
+                                }
+                                Log.i("ConfigurasiAPI", "onResponse: faq dynamic count data: " + cardlist.length());
+
+                            } else {
+                                CustomDialog myCD = new CustomDialog(activity, "Failed!", data, red) {
+                                    @Override
+                                    public void btnPositiveClicked() {
+
+                                    }
+
+
+                                };
+                                myCD.show();
+
+
+                            }
+                        } catch (JSONException e) {
+                            // JSON error
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (error != null) { //NULL DATA GIVEN
+                    Toast.makeText(activity,
+                            "Connection Problem!", Toast.LENGTH_LONG);
+                } else { //DATA GIVEN
+                   /* Toast.makeText(getApplicationContext(),
+                            error.getMessage(), Toast.LENGTH_LONG).show();*/
+                }
+            }
+        }) {
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json; charset=utf-8");
+                return headers;
+            }
+
+        };
+        //for timeout and make data do not send twice
+        jsonObjReq.setRetryPolicy(new DefaultRetryPolicy(
+                GetUrlName.MY_SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(jsonObjReq, tag_string_req);
+    }
 
 }

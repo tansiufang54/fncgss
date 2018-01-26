@@ -102,7 +102,7 @@ public class SettingsActivity extends Fragment {
     }
    @OnClick(R.id.txt_logout)
     public void toLogout(View v){
-       CustomDialog myCD = new CustomDialog(getActivity(), "Log out!", "Are you sure you want to log out?","Yes","No") {
+       CustomDialog myCD = new CustomDialog(getActivity(), "Log out", "Are you sure you want to log out?","OK","CANCEL") {
 
            @Override
            public void btnPositiveClicked() {

@@ -14,16 +14,18 @@ import java.util.HashMap;
 import java.util.List;
 
 import co.id.franknco.R;
-
+import co.id.franknco.crypto.Temp3DES;
+import co.id.franknco.model.Faq;
 
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
-    List<String> listDataHeader;
-    HashMap<String, List<String>> listDataChild;
 
-    public RecyclerAdapter(List<String> listDataHeader, HashMap<String, List<String>> listChildData) {
-        this.listDataChild = listChildData;
-        this.listDataHeader = listDataHeader;
+    private List<Faq> list = new ArrayList<>();
+    private Temp3DES temp3DES;
+
+    public RecyclerAdapter(List<Faq> list, Temp3DES temp3DES) {
+        this.list = list;
+        this.temp3DES = temp3DES;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -63,10 +65,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        String name = String.valueOf(listDataHeader.get(position));
-        String desc = TextUtils.join(", ", listDataChild.get(this.listDataHeader.get(position)));
-        holder.txtHeader.setText(name);
-        holder.txtFooter.setText(desc);
+        Faq faq = list.get(position);
+        holder.txtHeader.setText(temp3DES.decrypt(faq.question));
+        holder.txtFooter.setText(temp3DES.decrypt(faq.answer));
         holder.buttonDrop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,6 +84,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return listDataChild.size();
+        return list.size();
     }
 }

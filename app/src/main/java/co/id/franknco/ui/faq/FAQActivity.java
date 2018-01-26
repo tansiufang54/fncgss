@@ -10,6 +10,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,47 +32,51 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.id.franknco.R;
 import co.id.franknco.adapter.RecyclerAdapter;
+import co.id.franknco.controller.AppController;
+import co.id.franknco.controller.ConfigurasiAPI;
+import co.id.franknco.controller.GetUrlName;
+import co.id.franknco.crypto.Temp3DES;
+import co.id.franknco.dialog.CustomDialog;
+import co.id.franknco.interfaces.FaqListener;
+import co.id.franknco.model.Faq;
 
 public class FAQActivity extends AppCompatActivity {
-    @BindView(R.id.toolbar)Toolbar toolbar;
-   // @BindView(R.id.lvExp)ExpandableListView expListView;
 
-    FAQExpandableAdapter listAdapter;
-    List<String> listDataHeader;
-    HashMap<String, List<String>> listDataChild;
+    public static final String TAG = FAQActivity.class.getSimpleName();
 
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    // @BindView(R.id.lvExp)ExpandableListView expListView;
+
+
+    private ConfigurasiAPI function;
+    private Temp3DES temp3DES;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private List<String> list = new ArrayList<>();
+    private List<Faq> dataList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_faq);
         ButterKnife.bind(this);
+        temp3DES = new Temp3DES(this);
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
-        listAdapter = new FAQExpandableAdapter(this, listDataHeader, listDataChild);
-
         setupToolbar();
         prepareListData();
-
-
-        recyclerView.setLayoutManager(layoutManager);
-        mAdapter = new RecyclerAdapter(listDataHeader, listDataChild);
-        recyclerView.setAdapter(mAdapter);
 
 
     }
 
 
- //       expListView.setAdapter(listAdapter);
+    //       expListView.setAdapter(listAdapter);
 
- //       expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+    //       expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
- //           @Override
+    //           @Override
 //            public boolean onChildClick(ExpandableListView parent, View v,
 //                                        int groupPosition, int childPosition, long id) {
 //                Toast.makeText(
@@ -78,17 +94,17 @@ public class FAQActivity extends AppCompatActivity {
 //        expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
 
 //            @Override
- //           public void onGroupExpand(int groupPosition) {
+    //           public void onGroupExpand(int groupPosition) {
 //                Toast.makeText(getApplicationContext(),
 //                        listDataHeader.get(groupPosition) + " Expanded",
 //                        Toast.LENGTH_SHORT).show();
- //           }
- //       });
+    //           }
+    //       });
 
- //       expListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+    //       expListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
 
 //            @Override
- //           public void onGroupCollapse(int groupPosition) {
+    //           public void onGroupCollapse(int groupPosition) {
 //                Toast.makeText(getApplicationContext(),
 //                        listDataHeader.get(groupPosition) + " Collapsed",
 //                        Toast.LENGTH_SHORT).show();
@@ -109,47 +125,22 @@ public class FAQActivity extends AppCompatActivity {
         }
     }
 
-    private void prepareListData() {
-        listDataHeader = new ArrayList<String>();
-        listDataChild = new HashMap<String, List<String>>();
-
-        // Adding child data
-        listDataHeader.add("FAQ 1");
-        listDataHeader.add("FAQ 2");
-        listDataHeader.add("FAQ 3");
-
-        // Adding child data
-        List<String> top250 = new ArrayList<String>();
-        String faqValue = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet felis " +
-                "eu justo elementum laoreet tempus sed ex. Fusce in tellus non urna ultrices vulputate " +
-                "nec nec massa. Nulla vitae ex ante. Sed id ullamcorper eros. Pellentesque lobortis aliquam " +
-                "metus ut feugiat. Curabitur ornare nibh ac rhoncus ultricies. Ut luctus pretium nulla. " +
-                "Cras justo arcu, malesuada non mattis eget, blandit in neque.";
-
-        top250.add("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet felis " +
-                "eu justo elementum laoreet tempus sed ex. Fusce in tellus non urna ultrices vulputate " +
-                "nec nec massa. Nulla vitae ex ante. Sed id ullamcorper eros. Pellentesque lobortis aliquam " +
-                "metus ut feugiat. Curabitur ornare nibh ac rhoncus ultricies. Ut luctus pretium nulla. " +
-                "Cras justo arcu, malesuada non mattis eget, blandit in neque.");
-
-        List<String> nowShowing = new ArrayList<String>();
-        nowShowing.add("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet felis " +
-                "eu justo elementum laoreet tempus sed ex. Fusce in tellus non urna ultrices vulputate " +
-                "nec nec massa. Nulla vitae ex ante. Sed id ullamcorper eros. Pellentesque lobortis aliquam " +
-                "metus ut feugiat. Curabitur ornare nibh ac rhoncus ultricies. Ut luctus pretium nulla. " +
-                "Cras justo arcu, malesuada non mattis eget, blandit in neque.");
-
-        List<String> comingSoon = new ArrayList<String>();
-        comingSoon.add("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet felis " +
-                "eu justo elementum laoreet tempus sed ex. Fusce in tellus non urna ultrices vulputate " +
-                "nec nec massa. Nulla vitae ex ante. Sed id ullamcorper eros. Pellentesque lobortis aliquam " +
-                "metus ut feugiat. Curabitur ornare nibh ac rhoncus ultricies. Ut luctus pretium nulla. " +
-                "Cras justo arcu, malesuada non mattis eget, blandit in neque.");
-
-        listDataChild.put(listDataHeader.get(0), top250); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), nowShowing);
-        listDataChild.put(listDataHeader.get(2), comingSoon);
+    private void setAdapter(List<Faq> list) {
+        if (mAdapter == null) {
+            mAdapter = new RecyclerAdapter(list, temp3DES);
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setAdapter(mAdapter);
+        }else mAdapter.notifyDataSetChanged();
 
     }
 
+    private void prepareListData() {
+        function = new ConfigurasiAPI(this);
+        function.Faq(new FaqListener() {
+            @Override
+            public void onResult(List<Faq> list) {
+                setAdapter(list);
+            }
+        });
+    }
 }

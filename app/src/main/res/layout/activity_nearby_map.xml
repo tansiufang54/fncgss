@@ -8,7 +8,7 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/sd_appbar_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="276dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/sd_collapsing_toolbar"
@@ -32,7 +32,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/border_shadow_top"
         android:orientation="vertical"
-        android:layout_marginTop="-155dp"
+        android:layout_marginTop="-69dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
         <ListView
             android:id="@+id/listNearby"

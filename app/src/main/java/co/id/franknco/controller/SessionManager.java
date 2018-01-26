@@ -48,6 +48,9 @@ public class SessionManager {
     public static final String TOKEN_ID = "token";
 
     //merchant Id (make variable public to access from outside)
+    public static final String UM_ID = "umid";
+
+    //merchant Id (make variable public to access from outside)
     public static final String STATUS_TOKEN = "status_token";
 
 
@@ -58,7 +61,7 @@ public class SessionManager {
     }
 
     //For Session Login
-    public void createLoginSession(String id, String user, String token_id) {
+    public void createLoginSession(String id, String user, String token_id, String umid) {
         // Storing name in pref
         editor.putString(KEY_ID, id);
 
@@ -68,8 +71,20 @@ public class SessionManager {
         // Storing token in pref
         editor.putString(TOKEN_ID, token_id);
 
+        // Storing umid in pref
+        editor.putString(UM_ID, umid);
+
         // commit changes
         editor.commit();
+    }
+
+    public void setUserId(String U_Id) {
+
+        // Storing char pass in pref
+        editor.putString(KEY_ID, U_Id);
+        // commit changes
+        editor.commit();
+
     }
 
     public void setStatusToken(String statusToken) {
@@ -106,13 +121,15 @@ public class SessionManager {
         // commit changes
         editor.commit();
 
-         }
+    }
 
     public void logoutUser_L() {
         // Clearing all data from Shared Preferences
+
+        //_context.getSharedPreferences("pref", 0).edit().clear().apply();
         editor.clear();
         editor.commit();
-         // After logout redirect user to Loing activity
+        // After logout redirect user to Loing activity
 
 
     }
@@ -127,6 +144,11 @@ public class SessionManager {
 
     public String getTokenId() {
         return pref.getString(TOKEN_ID, "null");
+
+    }
+
+    public String getumId() {
+        return pref.getString(UM_ID, "null");
 
     }
 

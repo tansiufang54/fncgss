@@ -87,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/dd_mm_yyyy"
                     android:clickable="true"
-                    android:focusable="true"
+                    android:focusable="false"
                     android:textSize="16sp"
                     android:textColor="@color/colorAccent" />
             </android.support.design.widget.TextInputLayout>

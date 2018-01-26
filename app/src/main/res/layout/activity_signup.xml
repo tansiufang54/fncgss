@@ -2,31 +2,50 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_vertical"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:gravity="center_vertical">
 
-  <!--  <android.support.design.widget.AppBarLayout
+    <!--  <android.support.design.widget.AppBarLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+  -->
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
--->
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-  <!--  </android.support.design.widget.AppBarLayout>
--->
+    <!--  </android.support.design.widget.AppBarLayout>
+  -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:orientation="vertical"
         android:paddingEnd="@dimen/padding_end_layout"
-        android:paddingStart="@dimen/padding_start_layout"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:paddingStart="@dimen/padding_start_layout">
+
+
+        <!--  JUDUL Label -->
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/signUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_marginTop_header"
+            android:paddingBottom="@dimen/padding_bottom_header"
+            android:textColorHint="@color/colorAccent">
+
+            <co.id.franknco.controller.MyTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sign Up"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/text_size_header"
+                />
+        </android.support.design.widget.TextInputLayout>
 
         <ScrollView
             android:id="@+id/sv_layer1"
@@ -34,38 +53,20 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:textAlignment="center"
-         >
+            android:visibility="visible">
             <!-- FIRST PAGE -->
             <LinearLayout
                 android:id="@+id/linearlayout_nextsignup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="visible"
-                >
-                <!--  JUDUL Label -->
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/padding_bottom_header"
-                    android:layout_marginTop="@dimen/layout_marginTop_header"
-                    android:textColorHint="@color/colorAccent">
-
-                    <co.id.franknco.controller.MyTextView
-                        android:id="@+id/signUp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Sign Up"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="@dimen/text_size_header" />
-                </android.support.design.widget.TextInputLayout>
-
+                android:visibility="visible">
                 <!--  Email Label -->
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/colorAccent"
                     android:paddingBottom="10dp"
+                    android:textColorHint="@color/colorAccent"
 
                     >
 
@@ -83,8 +84,8 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/colorAccent"
-                    android:paddingBottom="10dp">
+                    android:paddingBottom="10dp"
+                    android:textColorHint="@color/colorAccent">
 
                     <co.id.franknco.controller.MyEditText
                         android:id="@+id/input_password"
@@ -100,8 +101,8 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/colorAccent"
-                    android:paddingBottom="11dp">
+                    android:paddingBottom="11dp"
+                    android:textColorHint="@color/colorAccent">
 
                     <co.id.franknco.controller.MyEditText
                         android:id="@+id/input_reEnterPassword"
@@ -126,42 +127,44 @@
         </ScrollView>
         <!-- NEXT PAGE -->
 
+
+        <!--  JUDUL Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_marginTop_header"
+            android:paddingBottom="@dimen/padding_bottom_header"
+            android:textColorHint="@color/colorAccent">
+
+            <co.id.franknco.controller.MyTextView
+                android:id="@+id/personalInformation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Personal Information"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/text_size_header" />
+        </android.support.design.widget.TextInputLayout>
+
         <ScrollView
             android:id="@+id/sv_layer2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textAlignment="center"
-            android:visibility="visible">
+            android:scrollbars="none"
+            android:visibility="gone">
 
             <LinearLayout
                 android:id="@+id/linearlayout_signup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-              >
-                <!--  JUDUL Label -->
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/padding_bottom_header"
-                    android:layout_marginTop="@dimen/layout_marginTop_header"
-                    android:textColorHint="@color/colorAccent">
-
-                    <co.id.franknco.controller.MyTextView
-                        android:id="@+id/personalInformation"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Personal Information"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="@dimen/text_size_header" />
-                </android.support.design.widget.TextInputLayout>
+                android:orientation="vertical">
                 <!-- Name Label -->
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/colorAccent"
-                    android:paddingBottom="10dp">
+                    android:paddingBottom="10dp"
+                    android:textColorHint="@color/colorAccent">
 
                     <co.id.franknco.controller.MyEditText
                         android:id="@+id/input_name"
@@ -170,15 +173,15 @@
                         android:hint="Name"
                         android:inputType="textPersonName"
                         android:textColor="@color/colorAccent"
-                        android:textSize="@dimen/text_size_insert"/>
+                        android:textSize="@dimen/text_size_insert" />
                 </android.support.design.widget.TextInputLayout>
 
                 <!-- Date of Birth Label -->
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/colorAccent"
-                    android:paddingBottom="10dp">
+                    android:paddingBottom="10dp"
+                    android:textColorHint="@color/colorAccent">
 
                     <co.id.franknco.controller.MyEditText
                         android:id="@+id/input_dateofbirth"
@@ -195,8 +198,8 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/colorAccent"
-                    android:paddingBottom="10dp">
+                    android:paddingBottom="10dp"
+                    android:textColorHint="@color/colorAccent">
 
                     <co.id.franknco.controller.MyEditText
                         android:id="@+id/input_address"
@@ -212,8 +215,8 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/colorAccent"
-                    android:paddingBottom="10dp">
+                    android:paddingBottom="10dp"
+                    android:textColorHint="@color/colorAccent">
 
                     <co.id.franknco.controller.MyEditText
                         android:id="@+id/input_mobile"
@@ -223,15 +226,15 @@
                         android:inputType="number"
                         android:maxLength="12"
                         android:textColor="@color/colorAccent"
-                        android:textSize="@dimen/text_size_insert"/>
+                        android:textSize="@dimen/text_size_insert" />
                 </android.support.design.widget.TextInputLayout>
 
                 <!-- No Card -->
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/colorAccent"
-                    android:paddingBottom="17dp">
+                    android:paddingBottom="17dp"
+                    android:textColorHint="@color/colorAccent">
 
                     <co.id.franknco.controller.MyEditText
                         android:id="@+id/input_card_number"
@@ -241,7 +244,7 @@
                         android:inputType="number"
                         android:maxLength="16"
                         android:textColor="@color/colorAccent"
-                        android:textSize="@dimen/text_size_insert"/>
+                        android:textSize="@dimen/text_size_insert" />
                 </android.support.design.widget.TextInputLayout>
                 <!-- CHECK BOX -->
                 <LinearLayout
@@ -253,7 +256,7 @@
                         android:id="@+id/checkbox_termsandconditions"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:theme="@style/CustomCheckedColor"  />
+                        android:theme="@style/CustomCheckedColor" />
 
                     <co.id.franknco.controller.MyTextView
                         android:id="@+id/terms_and_condition"
@@ -261,11 +264,12 @@
                         android:layout_height="wrap_content"
                         android:paddingBottom="@dimen/activity_horizontal_margin"
                         android:paddingTop="@dimen/activity_horizontal_margin"
-                        android:textSize="@dimen/text_size"
                         android:text="I agree to CMK's Terms of Service"
-                        android:textColor="@color/colorAccent" />
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size" />
 
                 </LinearLayout>
+
                 <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/btn_signup"
                     android:layout_width="@dimen/cardview_button_width"
@@ -295,6 +299,7 @@
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_size_button" />
                 </android.support.v7.widget.CardView>
+
                 <View
                     android:layout_width="wrap_content"
                     android:layout_height="20dp" />
@@ -303,15 +308,15 @@
             </LinearLayout>
         </ScrollView>
 
-      <!--  <co.id.franknco.controller.MyTextView
-            android:id="@+id/link_login"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="24dp"
-            android:gravity="center"
-            android:text="Already a register? Login"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/text_size" />
--->
+        <!--  <co.id.franknco.controller.MyTextView
+              android:id="@+id/link_login"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_marginBottom="24dp"
+              android:gravity="center"
+              android:text="Already a register? Login"
+              android:textColor="@color/colorAccent"
+              android:textSize="@dimen/text_size" />
+  -->
     </LinearLayout>
 </RelativeLayout>

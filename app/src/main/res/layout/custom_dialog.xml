@@ -17,7 +17,8 @@
         android:padding="5dp"
         android:gravity="center_horizontal"
         android:textSize="16sp"
-        android:text="Success!" />
+        android:text="Success!"
+        android:textColor="@color/greyish_brown"/>
     <co.id.franknco.controller.MyTextView
         android:id="@+id/cd_message"
         android:layout_width="wrap_content"

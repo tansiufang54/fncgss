@@ -27,7 +27,7 @@ public class MyTextView3 extends AppCompatTextView {
     }
 
     public void init() {
-        Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "font/AvenirNextLTPro-Bold.otf");
+        Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "font/Avenir-Next-Demi-Bold.otf");
         setTypeface(tf ,1);
 
     }

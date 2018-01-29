@@ -58,8 +58,7 @@
             android:theme="@style/AppTheme"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
-            android:launchMode="singleTask"
-            android:hardwareAccelerated="false">
+            android:launchMode="singleTask">
             <!--  <intent-filter>
                   <action android:name="android.intent.action.MAIN" />
 
@@ -71,8 +70,7 @@
             android:label="My Points"
             android:theme="@style/AppTheme"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"
-            android:hardwareAccelerated="false">
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.settings.SettingsActivity" />
@@ -82,8 +80,7 @@
             android:label="Inbox"
             android:theme="@style/AppTheme"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"
-            android:hardwareAccelerated="false">
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.settings.SettingsActivity" />

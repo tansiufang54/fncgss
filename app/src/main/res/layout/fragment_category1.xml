@@ -71,13 +71,13 @@
                             android:gravity="center"
                             android:paddingBottom="17dp">
 
-                            <co.id.franknco.controller.MyTextView
+                            <co.id.franknco.controller.MyTextView3
                                 android:id="@+id/ci_saldo"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
                                 android:text="10.000.000"
-                                android:textColor="@color/colorAccent"
+                                android:textColor="@color/greyish_brown"
                                 android:textSize="24sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
@@ -93,18 +93,17 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
-                                <co.id.franknco.controller.MyTextView2
+                                <co.id.franknco.controller.MyTextView3
                                     android:id="@+id/myTextView"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
                                     android:gravity="start|center"
                                     android:text="Issued"
-                                    android:textColor="@color/colorAccent"
+                                    android:textColor="@color/greyish_brown"
                                     android:paddingTop="10dp"
                                     android:paddingBottom="5dp"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold" />
+                                    android:textSize="14sp" />
 
                                 <co.id.franknco.controller.MyTextView
                                     android:id="@+id/ci_issued"
@@ -115,7 +114,7 @@
                                     android:paddingTop="10dp"
                                     android:paddingBottom="10dp"
                                     android:text="dd / Mmm / yy"
-                                    android:textColor="@color/colorAccent"
+                                    android:textColor="@color/greyish_brown"
                                     android:textSize="14sp" />
 
                             </LinearLayout>
@@ -128,7 +127,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
-                                <co.id.franknco.controller.MyTextView2
+                                <co.id.franknco.controller.MyTextView3
                                     android:layout_width="0dp"
                                     android:layout_weight="1"
                                     android:layout_height="match_parent"
@@ -138,10 +137,10 @@
                                     android:textStyle="bold"
                                     android:text="Expired"
                                     android:textSize="14sp"
-                                    android:textColor="@color/colorAccent"/>
+                                    android:textColor="@color/greyish_brown"/>
                                 <co.id.franknco.controller.MyTextView
                                     android:id="@+id/ci_expired"
-                                    android:textColor="@color/colorAccent"
+                                    android:textColor="@color/greyish_brown"
                                     android:layout_width="0dp"
                                     android:layout_weight="1"
                                     android:layout_height="match_parent"
@@ -176,15 +175,15 @@
                         android:paddingTop="18dp"
                         android:paddingLeft="24dp"
                         android:paddingRight="24dp">
-                        <co.id.franknco.controller.MyTextView2
+                        <co.id.franknco.controller.MyTextView3
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="History"
-                            android:textStyle="bold"
                             android:paddingTop="10dp"
                             android:paddingBottom="10dp"
+                            android:lineSpacingExtra="18sp"
                             android:textSize="14sp"
-                            android:textColor="@color/colorAccent"
+                            android:textColor="@color/greyish_brown"
                             android:layout_marginBottom="8dp"/>
 
                         <ListView

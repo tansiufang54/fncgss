@@ -68,7 +68,7 @@ public class CustomDialog extends Dialog implements View.OnClickListener {
         } else if (lbl_color.contains("green")) {
             dialogTitle.setTextColor(ContextCompat.getColor(activity, R.color.green));
         }else{
-            dialogTitle.setTextColor(Color.DKGRAY);
+            dialogTitle.setTextColor(ContextCompat.getColor(activity, R.color.grayish_brown));
         }
 
 

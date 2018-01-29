@@ -41,7 +41,7 @@ import co.id.franknco.controller.ConfigurasiAPI;
 
 public class CustomDialogAdd_Card extends Dialog implements android.view.View.OnClickListener {
     private Activity activity;
-    private Button btnPositive, btnNegative;
+    private TextView btnPositive, btnNegative;
     private String lbl_btnPositive = "Ok", lbl_btnNegative = "Cancel";
     private String lbl_dialogTitle, lbl_dialogMsg, lbl_color = "";
     private TextView dialogTitle, dialogMsg;
@@ -142,10 +142,10 @@ public class CustomDialogAdd_Card extends Dialog implements android.view.View.On
             }
         });
 
-        btnNegative = (Button) findViewById(R.id.cd_btn_negative2);
+        btnNegative = (TextView) findViewById(R.id.cd_btn_negative2);
         btnNegative.setOnClickListener(this);
 
-        btnPositive = (Button) findViewById(R.id.cd_btn_positive2);
+        btnPositive = (TextView) findViewById(R.id.cd_btn_positive2);
         btnPositive.setOnClickListener(this);
 
     }

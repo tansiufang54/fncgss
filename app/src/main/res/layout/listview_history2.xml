@@ -20,7 +20,7 @@
             android:layout_weight="1"
             android:text="Product Name"
             android:textSize="14sp"
-            android:textColor="@color/colorAccent" />
+            android:textColor="@color/greyish_brown" />
         <co.id.franknco.controller.MyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,11 +33,11 @@
             android:id="@+id/lvhis_item_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:gravity="end"
             android:text="449.000"
             android:textSize="14sp"
-            android:textColor="@color/colorAccent" />
+            android:lineSpacingExtra="6sp"
+            android:textColor="@color/greyish_brown" />
     </LinearLayout>
 
     <LinearLayout

@@ -31,14 +31,13 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/colorAccent">
-
-                <TextView
+                android:textColorHint="@color/greyish_brown">
+                <co.id.franknco.controller.MyTextView
                     android:id="@+id/personalInformation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/edit_profile"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/greyish_brown"
                     android:textSize="30sp" />
             </android.support.design.widget.TextInputLayout>
             <!-- Name Label -->
@@ -46,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="55dp"
-                android:textColorHint="@color/colorAccent">
+                android:textColorHint="@color/greyish_brown">
 
                 <co.id.franknco.controller.MyEditText
                     android:id="@+id/input_firstname"
@@ -55,14 +54,14 @@
                     android:hint="@string/first_name"
                     android:inputType="textPersonName"
                     android:textSize="16sp"
-                    android:textColor="@color/colorAccent" />
+                    android:textColor="@color/greyish_brown" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textColorHint="@color/colorAccent">
+                android:textColorHint="@color/greyish_brown">
 
                 <co.id.franknco.controller.MyEditText
                     android:id="@+id/input_lastname"
@@ -71,7 +70,7 @@
                     android:hint="@string/last_name"
                     android:inputType="textPersonName"
                     android:textSize="16sp"
-                    android:textColor="@color/colorAccent" />
+                    android:textColor="@color/greyish_brown" />
             </android.support.design.widget.TextInputLayout>
 
             <!-- Date of Birth Label -->
@@ -79,7 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textColorHint="@color/colorAccent">
+                android:textColorHint="@color/greyish_brown">
 
                 <co.id.franknco.controller.MyEditText
                     android:id="@+id/input_dateofbirth"
@@ -89,7 +88,7 @@
                     android:clickable="true"
                     android:focusable="false"
                     android:textSize="16sp"
-                    android:textColor="@color/colorAccent" />
+                    android:textColor="@color/greyish_brown" />
             </android.support.design.widget.TextInputLayout>
 
             <!-- Address Label -->
@@ -97,7 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textColorHint="@color/colorAccent">
+                android:textColorHint="@color/greyish_brown">
 
                 <co.id.franknco.controller.MyEditText
                     android:id="@+id/input_address"
@@ -106,7 +105,7 @@
                     android:hint="@string/address"
                     android:inputType="textPostalAddress"
                     android:textSize="16sp"
-                    android:textColor="@color/colorAccent" />
+                    android:textColor="@color/greyish_brown" />
             </android.support.design.widget.TextInputLayout>
 
             <!-- mobile number -->
@@ -114,7 +113,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textColorHint="@color/colorAccent">
+                android:textColorHint="@color/greyish_brown">
 
                 <co.id.franknco.controller.MyEditText
                     android:id="@+id/input_mobile"
@@ -124,7 +123,7 @@
                     android:inputType="number"
                     android:maxLength="12"
                     android:textSize="16sp"
-                    android:textColor="@color/colorAccent" />
+                    android:textColor="@color/greyish_brown" />
             </android.support.design.widget.TextInputLayout>
 
 
@@ -171,17 +170,47 @@
             </LinearLayout>-->
 
             <!-- Signup Button -->
-            <android.support.v7.widget.AppCompatButton
+            <!--<android.support.v7.widget.AppCompatButton-->
+                <!--android:id="@+id/btn_save_editprofile"-->
+                <!--android:layout_width="104dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="25dp"-->
+                <!--android:layout_gravity="end"-->
+                <!--android:background="@drawable/button_selector"-->
+                <!--android:text="@string/save"-->
+                <!--android:textAllCaps="false"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="18sp"-->
+                <!--android:gravity="center"/>-->
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/btn_save_editprofile"
                 android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:layout_gravity="end"
-                android:background="@drawable/button_selector"
-                android:text="@string/save"
-                android:textAllCaps="false"
-                android:textColor="@color/white" />
+                android:layout_height="@dimen/cardview_button_height"
+                android:layout_gravity="end|right"
+                android:layout_marginTop="@dimen/margin_top_login"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                card_view:cardBackgroundColor="@color/warmgray"
+                card_view:cardCornerRadius="5dp"
+                card_view:cardElevation="2dp"
+                card_view:cardPreventCornerOverlap="false"
+                card_view:contentPadding="0dp">
+                <!-- you could also add image view here for icon etc. -->
+                <co.id.franknco.controller.MyTextView2
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/warmgray"
+                    android:ellipsize="end"
+                    android:freezesText="true"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="Save"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_button" />
+            </android.support.v7.widget.CardView>
         </LinearLayout>
-
     </ScrollView>
 </RelativeLayout>

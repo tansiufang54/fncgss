@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".ui.main.MainActivity">
 
     <!--    <android.support.design.widget.AppBarLayout
@@ -26,7 +25,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="100">
+        android:weightSum="100"
+        android:background="@color/gray_accent">
         <ImageView
             android:id="@+id/img_fnc"
             android:layout_width="match_parent"
@@ -35,28 +35,35 @@
             android:layout_gravity="center"
             android:scaleType="center"
             android:src="@drawable/fnc_logo"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="4dp"
+            android:background="@color/white"/>
         <ImageView
             android:id="@+id/img_mondial"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="22"
             android:scaleType="center"
-            android:src="@drawable/mondial_logo" />
+            android:src="@drawable/mondial_logo"
+            android:background="@color/white"
+            android:layout_marginTop="4dp"/>
         <ImageView
             android:id="@+id/img_missmondial"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="22"
             android:scaleType="center"
-            android:src="@drawable/missmondial_logo" />
+            android:src="@drawable/missmondial_logo"
+            android:background="@color/white"
+            android:layout_marginTop="4dp"/>
         <ImageView
             android:id="@+id/img_the_palace"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="24"
             android:scaleType="center"
-            android:src="@drawable/thepalace_logo" />
+            android:src="@drawable/thepalace_logo"
+            android:background="@color/white"
+            android:layout_marginTop="4dp"/>
     </LinearLayout>
 
     <!--<LinearLayout

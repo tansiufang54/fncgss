@@ -22,6 +22,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     private List<Faq> list = new ArrayList<>();
     private Temp3DES temp3DES;
+    private boolean isSelected = false;
 
     public RecyclerAdapter(List<Faq> list, Temp3DES temp3DES) {
         this.list = list;
@@ -40,7 +41,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             layout = v;
             txtHeader = (TextView) v.findViewById(R.id.firstLine);
             txtFooter = (TextView) v.findViewById(R.id.secondLine);
-            buttonDrop = (Button)  v.findViewById(R.id.buttonDrop);
+//            buttonDrop = (Button)  v.findViewById(R.id.buttonDrop);
 
 
         }
@@ -66,18 +67,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         Faq faq = list.get(position);
+        setFaqVisibility(holder);
         holder.txtHeader.setText(temp3DES.decrypt(faq.question));
         holder.txtFooter.setText(temp3DES.decrypt(faq.answer));
-        holder.buttonDrop.setOnClickListener(new View.OnClickListener() {
+
+        holder.txtHeader.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if (view.isSelected()) {
-                    view.setSelected(false);
-                    holder.txtFooter.setVisibility(View.GONE);
-                }else {
-                    view.setSelected(true);
-                    holder.txtFooter.setVisibility(View.VISIBLE);
-                }
+            public void onClick(View v) {
+                isSelected = !isSelected;
+                setFaqVisibility(holder);
             }
         });
     }
@@ -85,5 +83,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    private void setFaqVisibility(ViewHolder holder) {
+        if (isSelected){
+            holder.txtHeader.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_keyboard_arrow_up_black_24dp,0);
+            holder.txtFooter.setVisibility(View.VISIBLE);
+        }else {
+            holder.txtHeader.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_keyboard_arrow_down_black_24dp,0);
+            holder.txtFooter.setVisibility(View.GONE);
+        }
     }
 }

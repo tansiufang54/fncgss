@@ -74,6 +74,7 @@ public class NearbyActivity extends Fragment {
         super.onCreate(savedInstanceState);
         View rootView = inflater.inflate(R.layout.activity_nearby, container, false);
         ButterKnife.bind(this, rootView);
+        ((MainActivity)getActivity()).getSupportActionBar().show();
         //setupToolbar();
 
         getBranch_fnc();

@@ -38,13 +38,13 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="@dimen/padding_bottom_header"
                 android:layout_marginTop="@dimen/layout_marginTop_header"
-                android:textColorHint="@color/colorAccent">
+                android:textColorHint="@color/greyish_brown">
 
                 <co.id.franknco.controller.MyTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="FAQ"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/greyish_brown"
                     android:textSize="@dimen/text_size_header" />
             </android.support.design.widget.TextInputLayout>
 

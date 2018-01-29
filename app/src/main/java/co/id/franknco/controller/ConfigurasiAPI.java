@@ -236,6 +236,7 @@ public class ConfigurasiAPI {
 
                     @Override
                     public void onResponse(JSONObject response) {
+                        Log.i("ConfigurasiAPI", "onResponse: result login: " + response);
 
                         try {
                             String code = response.getString("code");
@@ -478,7 +479,7 @@ public class ConfigurasiAPI {
 
         String tag_string_req = "req_forgot";
         String dataMSG = "";
-        dataMSG = temp3DES.encrypt(hp) + "#" + temp3DES.encrypt(email);
+        dataMSG = temp3DES.encrypt(email);
         Map<String, String> postParam = new HashMap<String, String>();
         postParam.put("code", "0300");
         postParam.put("msg", dataMSG);
@@ -490,13 +491,13 @@ public class ConfigurasiAPI {
 
                     @Override
                     public void onResponse(JSONObject response) {
-
+                        Log.i("ConfigurasiAPI", "onResponse: result forgot password: " + response);
 
                         try {
                             String code = response.getString("code");
                             String data = response.getString("msg");
                             if (code.equals("0310")) {
-                                CustomDialog myCD = new CustomDialog(activity, "Check your email!", "We sent an email to " + email + "\n Tap the link in that email to reset your password. ",green) {
+                                CustomDialog myCD = new CustomDialog(activity, "Check your email!", "We sent an email to " + email + "\n Tap the link in that email to reset your password. ", green) {
                                     @Override
                                     public void btnPositiveClicked() {
                                         Intent myintent = new Intent(activity, LoginActivity.class);
@@ -529,6 +530,15 @@ public class ConfigurasiAPI {
                                 };
                                 myCD.show();
 
+                            }else if (code.equals("0340")) {
+                                CustomDialog myCD = new CustomDialog(activity, "Failed!", data,red) {
+                                    @Override
+                                    public void btnPositiveClicked() {
+
+                                    }
+
+                                };
+                                myCD.show();
                             }
                         } catch (JSONException e) {
                             // JSON error

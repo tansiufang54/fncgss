@@ -156,9 +156,8 @@ public class MainActivity extends AppCompatActivity/* implements NavigationView.
                             .replace(R.id.root_frame, bottomNav3, "bottomNav3")
                             .commit();
 
-                } else {
-
                 }
+
                 return true;
             }
         });

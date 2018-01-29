@@ -510,8 +510,6 @@ public class NearbyActivityMap extends AppCompatActivity implements OnMapReadyCa
                                         googleMap.addMarker(sMarker);
                                         builder.include(sMarker.getPosition());
                                         bounds = builder.build();
-
-                                        Log.i(TAG, "onResponse: Get location all data in web service: " + sMarker.getPosition());
                                     }
                                  }
 

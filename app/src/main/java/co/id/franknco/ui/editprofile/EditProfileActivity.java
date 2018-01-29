@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
@@ -23,6 +25,7 @@ import butterknife.ButterKnife;
 import co.id.franknco.R;
 import co.id.franknco.controller.ConfigurasiAPI;
 import co.id.franknco.controller.SessionManager;
+import co.id.franknco.crypto.Temp3DES;
 import co.id.franknco.ui.signup.SignupActivity;
 
 
@@ -42,12 +45,13 @@ public class EditProfileActivity extends AppCompatActivity {
     @BindView(R.id.input_mobile)
     EditText _inputMobile;
     @BindView(R.id.btn_save_editprofile)
-    Button _butSaveEditProfile;
+    CardView _butSaveEditProfile;
     ConfigurasiAPI function;
     String inputfirstname, inputlastname, inputdob, inputaddress, inputmobile;
     Calendar myCalendar = Calendar.getInstance();
 
     private SessionManager sessionManager;
+    private Temp3DES temp3DES;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,7 @@ public class EditProfileActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         function = new ConfigurasiAPI(this);
         sessionManager = new SessionManager(this);
+        temp3DES = new Temp3DES(this);
 
 
 
@@ -112,7 +117,12 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     private void displayProfile() {
-        Log.i(TAG, "displayProfile: Display profile data: " + sessionManager.getUsername());
+        if (sessionManager.getUser().isEmpty())return;
+        String user = sessionManager.getUser();
+        String[] name = user.split(" ");
+        _inputFirstName.setText(name[0]);
+        _inputLastName.setText(name[1]);
+        _inputMobile.setText(temp3DES.decrypt(sessionManager.getUsername()));
     }
 
     public void editprofile() throws UnsupportedEncodingException {

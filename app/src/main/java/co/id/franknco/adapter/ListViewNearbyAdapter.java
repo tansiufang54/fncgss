@@ -93,9 +93,6 @@ public class ListViewNearbyAdapter extends BaseAdapter {
         final String finalTxtLatitude = txtLatitude;
         final String finalTxtLongitude = txtLongitude;
 
-        Log.i("ListViewNearbyAdapter", "getView: item count list: " + resultp.size());
-
-
         convertView.setOnClickListener(new View.OnClickListener() {
 
             @Override

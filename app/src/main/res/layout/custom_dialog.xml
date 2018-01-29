@@ -9,19 +9,19 @@
     android:layout_marginLeft="24dp"
     android:layout_marginRight="24dp"
     android:layout_marginBottom="3dp">
-    <co.id.franknco.controller.MyTextView2
+    <co.id.franknco.controller.MyTextView1
         android:id="@+id/cd_title"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:padding="8dp"
-        android:gravity="center"
+        android:padding="5dp"
+        android:gravity="center_horizontal"
         android:textSize="16sp"
-        android:textStyle="bold"
-        android:text="Unsuccessful!" />
+        android:text="Success!"
+        android:textColor="@color/greyish_brown"/>
     <co.id.franknco.controller.MyTextView
         android:id="@+id/cd_message"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/greyish_brown"
         android:text="Dialog Message Here"
@@ -29,15 +29,16 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:padding="8dp"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="12dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:gravity="center"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp">
-        <co.id.franknco.controller.MyTextView2
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="8dp">
+        <co.id.franknco.controller.MyTextView3
             android:id="@+id/cd_btn_negative"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -45,21 +46,19 @@
             android:layout_weight="2"
             android:textColor="@color/greyish_brown"
             android:gravity="right"
-            android:padding="5dp"
-            android:text="Btn Negative"
+            android:padding="8dp"
+            android:text="CANCEL"
             android:textSize="14sp"
-            android:textStyle="bold"
             android:visibility="gone" />
-        <co.id.franknco.controller.MyTextView2
+        <co.id.franknco.controller.MyTextView3
             android:id="@+id/cd_btn_positive"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:textColor="@color/greyish_brown"
             android:gravity="center"
-            android:padding="5dp"
+            android:padding="8dp"
             android:textSize="14sp"
-            android:text="Btn Positive"
-            android:textStyle="bold" />
+            android:text="OK" />
     </LinearLayout>
 </LinearLayout>

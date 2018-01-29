@@ -128,13 +128,14 @@ public class BottomNav1 extends Fragment implements SwipeRefreshLayout.OnRefresh
 
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_category1, container, false);
+        ((MainActivity)getActivity()).getSupportActionBar().show();
+        ButterKnife.bind(this, rootView);
+        temp3DES = new Temp3DES(getActivity());
         swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setProgressBackgroundColorSchemeColor(getResources().getColor(R.color.colorAccent));
         swipeRefreshLayout.setOnRefreshListener(this);
         sessionManager = new SessionManager(getActivity());
-        temp3DES = new Temp3DES(getActivity());
         interfaceHelper = InterfaceHelper.getInstance();
-        ButterKnife.bind(this, rootView);
         viewPager.setClipToPadding(false);
         viewPager.setPadding(60, 0, 60, 0);
         viewPager.setPageMargin(30);
@@ -143,7 +144,6 @@ public class BottomNav1 extends Fragment implements SwipeRefreshLayout.OnRefresh
         swipeRefreshLayout.setEnabled( false );
         nestedScrollView = (NestedScrollView) rootView.findViewById(R.id.nsv_card_detail);
         appBarLayout    = (AppBarLayout) rootView.findViewById(R.id.app_bar_card);
-
 
         /*swipeRefreshLayout.post(new Runnable() {
                                     @Override

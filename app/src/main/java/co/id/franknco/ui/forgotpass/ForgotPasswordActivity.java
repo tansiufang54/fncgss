@@ -59,13 +59,13 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
 
     public void forgotpass() throws UnsupportedEncodingException {
-        Log.d(TAG, "ForgotPass");
         _butForgotPass.setEnabled(false);
-        if (!validate()) {
+        if (!isValidate()) {
             onForgotPassFailed();
             return;
         }
 
+        Log.d(TAG, "ForgotPass");
         function.ForgetPass(hp,email);
         _butForgotPass.setEnabled(true);
     }
@@ -108,9 +108,23 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         return valid;
     }
 
+    public boolean isValidate() {
+        boolean valid = true;
+        email = _etEmailText.getText().toString().trim();
+
+        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            _etEmailText.setError("enter a valid email address");
+            valid = false;
+        } else {
+            _etEmailText.setError(null);
+        }
+
+        return valid;
+    }
+
     private void setupToolbar() {
         setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_black);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 

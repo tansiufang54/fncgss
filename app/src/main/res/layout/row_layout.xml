@@ -4,12 +4,11 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
     android:padding="8dip">
-    <co.id.franknco.controller.MyTextView2
+    <co.id.franknco.controller.MyTextView1
         android:id="@+id/firstLine"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/buttonDrop"
         android:gravity="left|center"
         android:lineSpacingExtra="6sp"
         android:text="@string/example_application"
@@ -22,23 +21,22 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/firstLine"
         android:layout_marginTop="8dp"
-        android:layout_toStartOf="@+id/buttonDrop"
         android:gravity="left|center"
-        android:lineSpacingExtra="6sp"
+        android:lineSpacingExtra="8sp"
         android:text="@string/example_application"
         android:textColor="@color/greyish_brown"
         android:textSize="12sp"
         android:visibility="gone" />
-    <Button
-        android:id="@+id/buttonDrop"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:background="@drawable/ic_selected_faq"
-        android:clickable="true"
-        android:contentDescription="@string/definition"
-        android:focusable="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"/>
+    <!--<Button-->
+        <!--android:id="@+id/buttonDrop"-->
+        <!--android:layout_width="24dp"-->
+        <!--android:layout_height="24dp"-->
+        <!--android:background="@drawable/ic_selected_faq"-->
+        <!--android:clickable="true"-->
+        <!--android:contentDescription="@string/definition"-->
+        <!--android:focusable="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentTop="true"/>-->
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

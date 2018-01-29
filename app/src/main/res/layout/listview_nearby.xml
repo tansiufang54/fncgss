@@ -18,7 +18,7 @@
         android:lineSpacingExtra="6sp"
         android:layout_marginLeft="14dp" />
 
-    <co.id.franknco.controller.MyTextView2
+    <co.id.franknco.controller.MyTextView
         android:id="@+id/txt_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,14 +28,14 @@
         android:layout_toStartOf="@+id/txt_km"
         android:text="Jl Gading martin Rt 05/06 palembang"
         android:textColor="@color/warmgray"
-        android:textSize="11sp" />
+        android:textSize="12sp" />
 
-    <co.id.franknco.controller.MyTextView2
+    <co.id.franknco.controller.MyTextView
         android:id="@+id/txt_open"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Open until 22.00"
-        android:textSize="11sp"
+        android:textSize="12sp"
         android:textColor="@color/warmgray"
         android:layout_below="@id/txt_address"
         android:layout_marginTop="4dp"
@@ -48,7 +48,7 @@
         android:layout_alignParentRight="true"
         android:layout_centerInParent="true"
         android:layout_marginRight="5dp"/>
-    <co.id.franknco.controller.MyTextView2
+    <co.id.franknco.controller.MyTextView1
         android:id="@+id/txt_km"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

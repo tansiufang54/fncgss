@@ -345,7 +345,7 @@ public class ConfigurasiAPI {
         // Tag used to cancel the request
         String tag_string_req = "req_sign_up";
 
-        SimpleDateFormat format = new SimpleDateFormat("ddmmyyyy");
+        SimpleDateFormat format = new SimpleDateFormat("ddMMyyyy");
         Date newDate = null;
         try {
             newDate = format.parse(dob);
@@ -353,7 +353,8 @@ public class ConfigurasiAPI {
             e.printStackTrace();
         }
 
-        format = new SimpleDateFormat("yyyy-mm-dd");
+        format = new SimpleDateFormat("yyyy-MM-dd");
+
         String date = format.format(newDate);
         String dataMSG = "";
         dataMSG = temp3DES.encrypt(cardnumber) + "#" + temp3DES.encrypt(fullname) + "#" + temp3DES.encrypt(date) + "#" + temp3DES.encrypt(address) + "#" + temp3DES.encrypt(email) + "#" + temp3DES.encrypt(hp) + "#" + temp3DES.encrypt((tripleDES.stringToSHA2(password)))+ "#"+ temp3DES.encrypt("A02");

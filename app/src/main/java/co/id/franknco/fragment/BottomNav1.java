@@ -61,6 +61,7 @@ import co.id.franknco.model.DataObject;
 import co.id.franknco.ui.addcard.AddCardActivity;
 import co.id.franknco.ui.login.LoginActivity;
 import co.id.franknco.ui.main.MainActivity;
+import co.id.franknco.ui.splash.SplashActivity;
 
 
 /**
@@ -293,12 +294,17 @@ public class BottomNav1 extends Fragment implements SwipeRefreshLayout.OnRefresh
                                     // the 'Force Close' message
                                 }
 
-                            } else {
+                            } else if(code.equals("0001") || (code.equals("0002")) || code.equals("0003") || code.equals("0004") || code.equals("0006")) {
+
                                 sessionManager.logoutUser_L();
                                 Intent myintent = new Intent(getActivity(), LoginActivity.class);
                                 myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 getActivity().finish();
                                 getActivity().startActivity(myintent);
+                            }else if(code.equals("0005")){
+                                String token1 = response.getString("token");
+                                sessionManager.setTokenId(token1);
+                                getCardListUser();
                             }
                             swipeRefreshLayout.setRefreshing(false);
                         } catch (JSONException e) {
@@ -396,7 +402,7 @@ public class BottomNav1 extends Fragment implements SwipeRefreshLayout.OnRefresh
         }
     }
 
-    private void getCardHistory(String card_number) {
+    private void getCardHistory(final String card_number) {
         String tag_string_req = "req_getpercardtransaction";
         String DataMSG = "";
         DataMSG = sessionManager.getUsername() + "#" + temp3DES.encrypt(card_number) + "#" + temp3DES.encrypt("15");
@@ -426,6 +432,17 @@ public class BottomNav1 extends Fragment implements SwipeRefreshLayout.OnRefresh
                                 //to show all listview content without scrolling
                                 interfaceHelper.setListViewHeight(lvhis);
 
+                            }else if(code.equals("0001") || (code.equals("0002")) || code.equals("0003") || code.equals("0004") || code.equals("0006")) {
+
+                                sessionManager.logoutUser_L();
+                                Intent myintent = new Intent(getActivity(), LoginActivity.class);
+                                myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                getActivity().finish();
+                                getActivity().startActivity(myintent);
+                            }else if(code.equals("0005")){
+                                String token1 = response.getString("token");
+                                sessionManager.setTokenId(token1);
+                                getCardHistory(card_number);
                             } else {
                                 lvhis.setVisibility(View.GONE);
                                 chEmpty.setVisibility(View.VISIBLE);

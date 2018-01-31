@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity/* implements NavigationView.
         sessionManager = new SessionManager(this);
         function = new ConfigurasiAPI(this);
         setupToolbar();
-        function.CheckToken();
+       // function.CheckToken();
 
       /*  DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

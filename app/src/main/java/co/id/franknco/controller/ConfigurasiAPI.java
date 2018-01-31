@@ -45,6 +45,7 @@ import co.id.franknco.crypto.TripleDES;
 import co.id.franknco.dialog.CustomDialog;
 import co.id.franknco.interfaces.FaqListener;
 import co.id.franknco.model.Faq;
+import co.id.franknco.ui.addcard.AddCardActivity;
 import co.id.franknco.ui.history.HistoryActivity;
 import co.id.franknco.ui.login.LoginActivity;
 import co.id.franknco.ui.main.MainActivity;
@@ -649,6 +650,17 @@ public class ConfigurasiAPI {
                                 };
                                 myCD.show();
 
+                            }else if(code.equals("0001") || (code.equals("0002")) || code.equals("0003") || code.equals("0004") || code.equals("0006")) {
+
+                                sessionManager.logoutUser_L();
+                                Intent myintent = new Intent(activity, LoginActivity.class);
+                                myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                activity.finish();
+                                activity.startActivity(myintent);
+                            }else if(code.equals("0005")){
+                                String token1 = response.getString("token");
+                                sessionManager.setTokenId(token1);
+                                ChangePass(o_pass,n_pass);
                             }
                         } catch (JSONException e) {
                             // JSON error
@@ -747,6 +759,17 @@ public class ConfigurasiAPI {
                                 };
                                 myCD.show();
 
+                            }else if(code.equals("0001") || (code.equals("0002")) || code.equals("0003") || code.equals("0004") || code.equals("0006")) {
+
+                                sessionManager.logoutUser_L();
+                                Intent myintent = new Intent(activity, LoginActivity.class);
+                                myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                activity.finish();
+                                activity.startActivity(myintent);
+                            }else if(code.equals("0005")){
+                                String token1 = response.getString("token");
+                                sessionManager.setTokenId(token1);
+                                EditProfile(name,dob,address,phonenumber);
                             }
                         } catch (JSONException e) {
                             // JSON error
@@ -870,6 +893,17 @@ public class ConfigurasiAPI {
                                 };
                                 myCD.show();
 
+                            }else if(code.equals("0001") || (code.equals("0002")) || code.equals("0003") || code.equals("0004") || code.equals("0006")) {
+
+                                sessionManager.logoutUser_L();
+                                Intent myintent = new Intent(activity, LoginActivity.class);
+                                myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                activity.finish();
+                                activity.startActivity(myintent);
+                            }else if(code.equals("0005")){
+                                String token1 = response.getString("token");
+                                sessionManager.setTokenId(token1);
+                                AddCardNum(cardnumb);
                             }
                         } catch (JSONException e) {
                             // JSON error
@@ -939,6 +973,17 @@ public class ConfigurasiAPI {
                                 String modified_by = msg.getString("modified_by");
                                 // CALL BACK
                                 result.onSuccess(temp3DES.decrypt(privacy_text));
+                            }else if(code.equals("0001") || (code.equals("0002")) || code.equals("0003") || code.equals("0004") || code.equals("0006")) {
+
+                                sessionManager.logoutUser_L();
+                                Intent myintent = new Intent(activity, LoginActivity.class);
+                                myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                activity.finish();
+                                activity.startActivity(myintent);
+                            }else if(code.equals("0005")){
+                                String token1 = response.getString("token");
+                                sessionManager.setTokenId(token1);
+                                PrivacyPolicy(result);
                             } else {
                                 CustomDialog myCD = new CustomDialog(activity, "Failed!", data, red) {
                                     @Override
@@ -1023,7 +1068,18 @@ public class ConfigurasiAPI {
                                 }
                                 Log.i("ConfigurasiAPI", "onResponse: faq dynamic count data: " + cardlist.length());
 
-                            } else {
+                            } else if(code.equals("0001") || (code.equals("0002")) || code.equals("0003") || code.equals("0004") || code.equals("0006")) {
+
+                                sessionManager.logoutUser_L();
+                                Intent myintent = new Intent(activity, LoginActivity.class);
+                                myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                activity.finish();
+                                activity.startActivity(myintent);
+                            }else if(code.equals("0005")){
+                                String token1 = response.getString("token");
+                                sessionManager.setTokenId(token1);
+                                Faq(listener);
+                            }else {
                                 CustomDialog myCD = new CustomDialog(activity, "Failed!", data, red) {
                                     @Override
                                     public void btnPositiveClicked() {

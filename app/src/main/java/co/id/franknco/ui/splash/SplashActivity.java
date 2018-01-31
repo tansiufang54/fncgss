@@ -165,13 +165,17 @@ public class SplashActivity extends AppCompatActivity {
                                 sessionManager.createLoginSession(hp, fullname, token, umid);
 
                                 return;
-                            } else {
-
+                            } else if(code.equals("0001") || (code.equals("0002")) || code.equals("0003") || code.equals("0004") || code.equals("0006")) {
+                                sessionManager.logoutUser_L();
                                 Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
                                 finish();
+                            }else if(code.equals("0005")){
+                                String token1 = response.getString("token");
+                                sessionManager.setTokenId(token1);
+                                CheckKeepMe(hp,token);
                             }
                             // String error = "1";
                             // Check for error node in json
